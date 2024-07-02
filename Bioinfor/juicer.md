@@ -179,3 +179,17 @@ pre {
   color: #5fd381;
 }
 </style>
+
+
+
+## Other Pipelines for Hi-C Data
+
+![© 4dn](https://s3.amazonaws.com/4dn-dcic-public/static-pages/hicpipeline.png)
+
+
+- [Hi-C Processing Pipeline](https://data.4dnucleome.org/resources/data-analysis/hi_c-processing-pipeline)
+- [HiC-Pro: an optimized and flexible pipeline for Hi-C data processing](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0831-x)
+- [HiCUP: pipeline for mapping and processing Hi-C data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4706059/)
+- [Babraham Bioinformatics: HiCUP (Hi-C User Pipeline)](https://www.bioinformatics.babraham.ac.uk/projects/hicup/)
+- [HiC Data Standards and Processing Pipeline](https://www.encodeproject.org/hic/)
+- [nf-core/hic](https://nf-co.re/hic/2.1.0)

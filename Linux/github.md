@@ -111,9 +111,27 @@ After that, copy the key into github.
 You may still find that Username is needed for push.
 According [2240](https://stackoverflow.com/questions/6565357/git-push-requires-username-and-password), we need to change the type or remote link.
 
+### Test Your Connection
+
+Once you down, you could test the ssh connections with `ssh -T git@github.com`. If it works fine, you'll get the greating form GitHub:
+
+<pre>
+Hi Karobben! You've successfully authenticated, but GitHub does not provide shell access.
+</pre>
+
+If you are running on another environment, you'll get a warning. But it would be fine, just input `yes` would solve all problems.
+<pre>
+Warning: the ECDSA host key for 'github.com' differs from the key for the IP address '140.82.114.3'
+Offending key for IP in /home/ken/.ssh/known_hosts:9
+Matching host key in /home/ken/.ssh/known_hosts:69
+Are you sure you want to continue connecting (yes/no)?
+</pre>
+
+### Ready Your Local Repository
+
 Enter your github repository page and select the ssh link to configure the local repository as follow and the problem shell be solved.
 
-![](https://s1.ax1x.com/2023/02/11/pSh4zNT.png)
+![github repository](https://s1.ax1x.com/2023/02/11/pSh4zNT.png)
 
 ```bash
 git remote set-url origin git@github.com:username/repo.git
