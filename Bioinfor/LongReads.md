@@ -1,17 +1,17 @@
 ---
 toc: true
 url: LongReads
-covercopy: © Karobben
+covercopy: <a href="https://www.researchgate.net/publication/361189403_Introduction_to_the_principles_and_methods_underlying_the_recovery_of_metagenome-assembled_genomes_from_metagenomic_data?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6Il9kaXJlY3QiLCJwYWdlIjoiX2RpcmVjdCJ9fQ">© Gleb Goussarov</a>
 priority: 10000
 date: 2024-06-30 15:50:52
 title: "Nanopre and PacBio based Genome Assembly"
 ytitle: "Nanopre and PacBio based Genome Assembly"
 description: "Nanopre and PacBio based Genome Assembly" 
 excerpt: "Nanopre and PacBio based Genome Assembly"
-tags: []
-category: []
-cover: ""
-thumbnail: ""
+tags: [WGS, Genome, Bioinformatics, NGS]
+category: [Biology, Bioinformatics, WGS]
+cover: "https://www.researchgate.net/publication/361189403/figure/fig4/AS:11431281172749697@1688650449403/PacBio-Sequencing-adapters-enable-the-circularization-of-DNA-fragments-Next-a.png"
+thumbnail: "https://www.researchgate.net/publication/361189403/figure/fig4/AS:11431281172749697@1688650449403/PacBio-Sequencing-adapters-enable-the-circularization-of-DNA-fragments-Next-a.png"
 ---
 
 Related Papers:
@@ -60,8 +60,11 @@ In this paper, the data shows that the assembly results from ONT reads are not a
 | **Assembly**       | Redbean v2.5, Flye v2.5, and Canu | Redbean v2.5, Flye v2.5, and Canu | SuperPlus v1.0, Supernova v2.1.1, TGS-GapCloser |
 | **Data Size**      | 24.9 Gb         | 65.2 Gb         | 74.5 Gb                   |
 | **Largest Contigs**| 9,683,794       | 23,824,472      | 517,998                   |
+| **Scaffold**       | 5,332           | 5,446           | 5,065                     |
+| **Scaffold N50**   | 3.52            | 3.50            | 3.54                      |
 | **Contigs**        | 6,022           | 5,717           | 19,954                    |
-| **N50 (M)**        | 1.59            | 2.10            | 39.47                     |
+| **Contigs N50(M)** | 1.04            | 1.60            | 0.036                     |
+| **BUSCO**          | 1,963 (92.5)    | 1,983 (93.5)    | 1,873 (88.3)              |
 
 
 Hybrid assembly:

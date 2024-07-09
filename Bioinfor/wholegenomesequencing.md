@@ -35,12 +35,16 @@ KEY WHOLE-GENOME SEQUENCING METHODS
 
 ### SKLA1.0 (Duck)
 
-SKLA1.0 Duck Genome[^SKLA]
+|||
+|:-|:-:|
+|A chromosome-scale Beijing duck assembly (SKLA1.0[^SKLA]) by integrating Nanopore, Bionano, and Hi-C data covers 40 chromosomes, improves the contig N50 of the previous duck assembly with highest contiguity (ZJU1.0) of more than a 5.79-fold and contains a complete genomic map of the MHC.|![Duck](https://www.researchgate.net/profile/Inma-Aznar/publication/51580858/figure/fig19/AS:669632922923023@1536664338755/Mallard-Anas-platyrhynchos-Photo-John-Carey.png)[© Olivia Crowe](https://www.researchgate.net/publication/51580858_A_review_of_Ireland's_waterbirds_with_emphasis_on_wintering_migrants_and_reference_to_H5N1_avian_influenza?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6Il9kaXJlY3QiLCJwYWdlIjoiX2RpcmVjdCJ9fQ)|
 
 Species: Anas platyrhynchos (a native breed in China, using a hierarchical and hybrid approach)
 
 Reads types: Nanopore, Bionano, and Hi-C data.
   - 71-fold normal and 24-fold ultra-long Nanopore reads
+  - 117-fold 150bp paired-end Illumina reads for polishing
+  - 216-fold optical map reads and 234-fold PE150 Hi-C
 
 Result:
   - 40 chromosomes, improves the contig N50 of the previous duck assembly with highest contiguity (ZJU1.0) of more than a 5.79-fold
@@ -90,12 +94,14 @@ Something I don't understand:
 - Visualization: Bionano map-[SOLVE](https://bionanogenomics.com/support/software-downloads)
 
 
-[^SKLA]: Hu J, Song L, Ning M, Niu X, Han M, Gao C, Feng X, Cai H, Li T, Li F, Li H, Gong D, Song W, Liu L, Pu J, Liu J, Smith J, Sun H, Huang Y. A new chromosome-scale duck genome shows a major histocompatibility complex with several expanded multigene families. BMC Biol. 2024 Feb 5;22(1):31. doi: 10.1186/s12915-024-01817-0. PMID: 38317190; PMCID: PMC10845735.
-
+[^SKLA]: Hu J, Song L, Ning M, Niu X, Han M, Gao C, Feng X, Cai H, Li T, Li F, Li H, Gong D, Song W, Liu L, Pu J, Liu J, Smith J, Sun H, Huang Y. A new chromosome-scale duck genome shows a major histocompatibility complex with several expanded multigene families. BMC Biol. 2024 Feb 5;22(1):31. doi: 10.1186/s12915-024-01817-0. PMID: 38317190; PMCID: PMC10845735. [Paper](https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-024-01817-0#Sec26)
 
 ### ASM2904224v1: Greater scaup (Aythya marila)
 
-[^ASM2904224v1]
+|||
+|:-|:-:|
+|First high-quality chromosome-level genome assembly of A. marila[^ASM2904224v1], with a final genome size of 1.14 Gb, scaffold N50 of 85.44 Mb, and contig N50 of 32.46 Mb. A total of 154.94 Mb of repetitive sequences were identified. 15,953 protein-coding genes were predicted in the genome, and 98.96% of genes were functionally annotated.|![Duck](https://www.researchgate.net/profile/Inma-Aznar/publication/51580858/figure/fig19/AS:669632922923023@1536664338755/Mallard-Anas-platyrhynchos-Photo-John-Carey.png)[© Olivia Crowe](https://www.researchgate.net/publication/51580858_A_review_of_Ireland's_waterbirds_with_emphasis_on_wintering_migrants_and_reference_to_H5N1_avian_influenza?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6Il9kaXJlY3QiLCJwYWdlIjoiX2RpcmVjdCJ9fQ)|
+
 
 1. **Nanopore long reads**, errors corrected using **Illumina short reads**
 2. Quality: Final size: 1.14 Gb, scaffold N50 of 85.44 Mb, and contig N50 of 32.46 Mb. 
