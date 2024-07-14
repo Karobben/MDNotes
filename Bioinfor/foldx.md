@@ -8,8 +8,8 @@ title: "FoldX"
 ytitle: "FoldX"
 description: "FoldX"
 excerpt: "FoldX"
-tags: []
-category: []
+tags: [Bioinformatics, Protein Structure]
+category: [Biology, Bioinformatics, Software ]
 cover: "https://foldxsuite.crg.eu/sites/default/files/FoldX.png"
 thumbnail: "https://foldxsuite.crg.eu/sites/default/files/FoldX.png"
 ---
