@@ -14,6 +14,8 @@ cover: "https://imgur.com/IX0XAg8.png"
 thumbnail: "https://imgur.com/IX0XAg8.png"
 ---
 
+
+
 ## Whole Genome Sequencing (WGS)
 
 > Whole-genome sequencing (WGS) is a comprehensive method for analyzing entire genomes. Genomic information has been instrumental in identifying inherited disorders, characterizing the mutations that drive cancer progression, and tracking disease outbreaks. Rapidly dropping sequencing costs and the ability to produce large volumes of data with today’s sequencers make whole-genome sequencing a powerful tool for genomics research. ([Illumina](https://www.illumina.com/techniques/sequencing/dna-sequencing/whole-genome-sequencing.html))

@@ -58,6 +58,16 @@ We take `5wl2` as example:
 |:-:|
 |[© pipebio](https://pipebio.com/blog/antibody-numbering)|
 
+
+The Kabat definition is based on sequence variability and is the most commonly used. Here is the CDR definition from [Bioinf.org.uk](http://www.bioinf.org.uk/abs/info.html
+)
+
+|                 | L1         | L2         | L3         | H1         | H2         | H3         |
+|-----------------|------------|------------|------------|------------|---------------------|------------|------------|
+| **Kabat**       | L24-L34    | L50-L56    | L89-L97    | H31-H35B   | H50-H65    | H95-H102   |
+
+
+
 How to make it in python:
 
 ```python
