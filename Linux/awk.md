@@ -61,16 +61,17 @@ awk '{if(NR==2)print}' filename
 awk '{if(NR!=2)print}' filename
 ```
 
-## FS
+## OFS
 ```bash
-awk '{FS="\t";print $6}' filename
+awk '{OFS="\t";print $6}' filename
 or
 awk -F"\t" '{print $6}' filename
 awk -F"\t" 'NR==1,NR==10{print $6}' filename #print the cloum 6 from line 1 to line 10;
 awk -F"\t" '{print  length($5)}' filename # length() function to count the
 ```
 
-##Delete columns
+## Delete columns
+
 ```bash
 awk '$1="";{print;OFS=\t}' FILENAME
 ```
@@ -86,7 +87,7 @@ awk '$3>10' FILENAME
 
 ## Deleted the line after calculation
 
-the grammar `gawk` is much the same like `awk` but more flexible
+The grammar `gawk` is much the same like `awk` but more flexible
 
 To delete some lines which doesn't contain `Baeldung`
 ```bash

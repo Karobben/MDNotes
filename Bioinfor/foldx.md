@@ -7,7 +7,7 @@ date: 2024-07-06 17:11:38
 title: "FoldX"
 ytitle: "FoldX"
 description: "FoldX"
-excerpt: "FoldX"
+excerpt: "The FoldX Suite builds on the strong fundament of advanced protein design features, already implemented in the successful FoldX3, and exploits the power of fragment libraries, by integrating in silico digested backbone protein fragments of different lengths. Such fragment-based strategy allows for new powerful capabilities: loop reconstruction, implemented in LoopX and peptide docking, implemented in PepX. The Suite also features an improved usability, thanks to a new boost Command Line Interface."
 tags: [Bioinformatics, Protein Structure]
 category: [Biology, Bioinformatics, Software ]
 cover: "https://foldxsuite.crg.eu/sites/default/files/FoldX.png"
@@ -275,7 +275,7 @@ ggplot(TBMF[TBMF$Diff <= 2,], aes(Diff, log10_K )) + geom_point() +
 |:-:|:-:|
 |![](https://imgur.com/zstiOTG.png)|![](https://imgur.com/Ceu7diL.png)|
 
-According to this plot, the correlation between experiments and the prediction is terrible. I think the main reason is because all those positions are located on CDRH3 region which not only they are random loop, but also the key site to determine the binding affinity of the antibody. So, the prediction result would be extrimly hard. But I think the result is not totally useless. At least when the &Delta; G of the complex predicted became more stable ($\Delta_ {mutate}  \ Delta_ {wt} < 0$), most of experiments results are very closing to the wild type.
+According to this plot, the correlation between experiments and the prediction is terrible. I think the main reason is because all those positions are located on CDRH3 region which not only they are random loop, but also the key site to determine the binding affinity of the antibody. So, the prediction result would be extrimly hard. But I think the result is not totally useless. At least when the &Delta; G of the complex predicted became more stable ($\Delta_ {mutate} - \Delta_ {wt} < 0$), most of experiments results are very closing to the wild type.
 
 | Mute     | WT       | Anno  | Diff   | log10_K   |
 |----------|----------|-------|--------|-----------|
@@ -303,8 +303,30 @@ According to this plot, the correlation between experiments and the prediction i
 | -110.944 | -110.837 | N101H | -0.107 | -8.423659 |
 
 
+[^Qi]: [Teo Q W, Wang Y, Lv H, et al. Stringent and complex sequence constraints of an IGHV1-69 broadly neutralizing antibody to influenza HA stem[J]. Cell reports, 2023, 42(11).](https://www.sciencedirect.com/science/article/pii/S2211124723014225)
 
-[^Qi]: Teo Q W, Wang Y, Lv H, et al. Stringent and complex sequence constraints of an IGHV1-69 broadly neutralizing antibody to influenza HA stem[J]. Cell reports, 2023, 42(11).
+
+## Interface Analysis
+
+```bash
+# after repair the PDB
+FoldX --command=AnalyseComplex --pdb=4FQI_Repair.pdb --analyseComplexChains=A,B,H,L
+# output: Indiv_energies_4FQI_Repair_AC.fxout  Interaction_4FQI_Repair_AC.fxout  Interface_Residues_4FQI_Repair_AC.fxout  Summary_4FQI_Repair_AC.fxout
+```
+
+- **Indiv_energies_4FQI_Repair_AC**:
+    This file contains individual energy contributions of residues to the overall stability of the protein complex. To be notice, the total energy of the complex is not equals to the sum of individual total energy.
+- **Interaction_4FQI_Repair_AC**:
+    It records detailed interaction between each chain pairs. I think **Interaction Energy** is one of most important results from it.
+- **Summary_4FQI_Repair_AC.fxout**:
+    It contains only a few important columns from the *Interaction_4FQI_Repair_AC.fxout*.
+- **Interface_Residues_4FQI_Repair_AC.fxout**:
+    It records all residues in the interface in a list. 
+
+
+!!! note Notice
+    Before running `AnalyseComplex`, you should renumber the residues as well. Residue numbers like 100A and 100B in an antibody can both be shown as 100, leading to multiple entries like YH100 in the list. After renumbering the whole PDB with the script above, the results would become "YH103, YH104, YH105".
+    Additionally, the `Interface_residues` results may contain some unusual entries such as **oA11**. Technically, this means that in chain A, position 11, there is a non-typical residue, such as a Zn ion.
 
 <style>
 pre {
