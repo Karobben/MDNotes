@@ -87,7 +87,6 @@ Here is the result of before and after repairing. The RMS=0.01 which means it al
 
 ![](https://imgur.com/i8aPrTy.png)
 
-
 ## Stability Calculations
 
 After repaired the PDB file, you can get the result immediately. 
@@ -304,6 +303,19 @@ According to this plot, the correlation between experiments and the prediction i
 
 
 [^Qi]: [Teo Q W, Wang Y, Lv H, et al. Stringent and complex sequence constraints of an IGHV1-69 broadly neutralizing antibody to influenza HA stem[J]. Cell reports, 2023, 42(11).](https://www.sciencedirect.com/science/article/pii/S2211124723014225)
+
+
+### How it work?
+
+Here is the corrected version of your text:
+
+According to the documentation: This is the workhorse of the FoldX mutation engine. This command ensures that whenever you are mutating a protein, you always move the same neighbors in the WT and in the mutant, producing for each mutant PDB a corresponding PDB for its WT. Each mutation will move different neighbors, and therefore you need different WT references.
+
+From the experience above, I think it works under the assumption that the structure of the protein won't change due to the point mutation. As shown below, even though the amino acid changed from **Y** to **R**, the position remains unchanged, and the RMSD is 0. So, I think it would be more reliable when this amino acid is in the alpha helix or beta sheet. When a point mutation happens in these regions, the rough structure remains relatively the same. However, when the mutation occurs in the loop region, the result would be less reliable. According to Yuan M, et al.[^Yuan_M_23], when the mutation only happens in the V gene of the antibody, the correct ratio was about 70%. But according to the test above, the result is inconsistent and lacks convinciveness.
+
+![](https://imgur.com/JpXnrlY.png)
+
+[^Yuan_M_23]: Yuan M, Feng Z, Lv H, et al. Widespread impact of immunoglobulin V-gene allelic polymorphisms on antibody reactivity[J]. Cell Reports, 2023, 42(10).
 
 
 ## Interface Analysis
