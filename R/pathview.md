@@ -5,7 +5,7 @@ url: pathview
 date: 2020/05/26
 toc: true
 excerpt: "The best way to draw kegg pathways in all platform!!! It is very friendly and powerful!!"
-tags: [R, Plot, KEGG, KEGG pathway]
+tags: [R, Plot, KEGG]
 category: [R, Plot, VisuaProtocol]
 cover: 'https://s1.ax1x.com/2020/05/26/tiZzjS.md.png'
 thumbnail: 'https://s1.ax1x.com/2020/05/26/tiZzjS.md.png'

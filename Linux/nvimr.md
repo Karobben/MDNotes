@@ -8,7 +8,7 @@ title: "Using Vim as Python and R IDE"
 ytitle: "Using Vim as Python and R IDE"
 description: "Using Vim as Python and R IDE, easy configure"
 excerpt: "Using Vim as R IDE"
-tags: [vim, IDE]
+tags: [IDE]
 category: [Linux]
 cover: "https://cdn-media-1.freecodecamp.org/images/1*cRo1ybQbVMMbAHRjgUhXqg.png"
 thumbnail: "https://cdn-media-1.freecodecamp.org/images/1*cRo1ybQbVMMbAHRjgUhXqg.png"

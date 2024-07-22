@@ -5,7 +5,7 @@ url: tl2
 date: 2020/01/22
 toc: true
 excerpt: "Machine learning: Transfer Learning"
-tags: [Python, Machine Learning, Transfer Learning]
+tags: [Python, Machine Learning, Transfer Learning, AI]
 category: [Python, Data, Machine Learning]
 cover: 'https://camo.githubusercontent.com/c04e16c05de80dadbdc990884672fc941fdcbbfbb02b31dd48c248d010861426/68747470733a2f2f7777772e74656e736f72666c6f772e6f72672f696d616765732f74665f6c6f676f5f736f6369616c2e706e67'
 thumbnail: 'https://camo.githubusercontent.com/c04e16c05de80dadbdc990884672fc941fdcbbfbb02b31dd48c248d010861426/68747470733a2f2f7777772e74656e736f72666c6f772e6f72672f696d616765732f74665f6c6f676f5f736f6369616c2e706e67'

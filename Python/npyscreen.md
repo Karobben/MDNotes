@@ -6,7 +6,7 @@ url: npyscreen2
 date: 2020/09/12
 toc: true
 excerpt: "Npyscreen is a python widget library and application framework for programming terminal or console applications. It is built on top of ncurses, which is part of the standard library."
-tags: [Python, TUI lib]
+tags: [Python, TUI]
 category: [Python, TUI, others]
 cover: 'https://s1.ax1x.com/2020/06/22/NYNrZj.png'
 thumbnail: 'https://s1.ax1x.com/2020/06/22/NYNrZj.png'

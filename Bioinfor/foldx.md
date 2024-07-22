@@ -153,9 +153,35 @@ AA4F,QD4F;
 
 In this example, it would generate 2 new structures. For the first one, in chain A, the mutation is A4P, in chain D, the mutation is F4P. The ";" means the first mutate process is done. It would read the second line to create the another mutation file. You don't need to calculate the mutation energy difference between before and after again. Because all they are saved in the file (*.fxout) as `tsv` format.
 
+For running it, you just need to run like:
+
+```bash
+FoldX --command=BuildModel --pdb=protein_Repair.pdb --mutant-file=individual_list.txt
+```
+
+An interesting thing is for the mutate-file, it has to start with "individual_list" or 'mutate_file' or you'll get error. After the job is down, you'll got 4 outputs: "Average_*.fxout", "Dif_*.fxout", "PdbList_*.fxout", and "Raw_*.fxout". Here is some details about those outputs:
+
+1. **Average_\*.fxout**:
+   - This file contains the average energy values from multiple runs of the BuildModel command. FoldX often performs multiple simulations to generate an average value to improve reliability and account for variability in the calculations.
+   - It includes averaged energy terms like van der Waals interactions, electrostatics, solvation, and total energy for the mutated model.
+
+2. **Dif_\*.fxout**:
+   - This file contains the differences in energy values between the wild-type and mutated proteins.
+   - It shows the ΔΔG (difference in free energy change) due to the introduced mutation(s), which helps in understanding the stability change caused by the mutation.
+
+3. **PdbList_\*.fxout**:
+   - This file lists the PDB files generated during the mutation process.
+   - It includes the names of the mutated PDB files that FoldX generated, which you can further analyze or visualize using molecular visualization tools.
+
+4. **Raw_\*.fxout**:
+   - This file contains the raw energy values for each individual run of the BuildModel command.
+   - It provides detailed energy components for each simulation, such as van der Waals interactions, electrostatics, solvation, and other energy terms for the mutated model.
+
 !!! note Notice
     1. For the `mutate_file`, you can't add any extra expressions like space in it.
     2. According to the [PDB document](https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/protein-primary-sequences), the SEQRES and ATOM records may include only a portion of the molecule. So if your sequence was extracted from the PDB file, the numbering of it may incorrect. For achieve the correct position, you may like to extract extract the sequence from cif format.
+
+### BuildModel in Action
 
 Here, the test data is from Qi Wen Teo[^Qi] CR9114 (**4FQI**) as example. I randomly choose 4FQI as the standard. In the paper, they mutated the resi through 93 to 102 (kabat numbering) which is 97 to 110. So, we could do it with a `mutate_file`. For FoldX, it only recognize the digital numbering. But in antibody (show below) sometimes was numbered by kabat numbering or something similar methods. So it may contain numbering like 100A, 100B, etc. They can't recognized by FoldX and we need to renumbering them. Pymol is very complicated in this kind of task. But Biopython could handle it very well. You could using the script from [Karobben/Bio_tools](https://github.com/Karobben/Bio_tools) with code: `python PDBreNumbering.py -i 4FQI_Repair.pdb -o renumbered.pdb`
 

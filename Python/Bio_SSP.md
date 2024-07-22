@@ -6,7 +6,7 @@ url: bio_ssp
 date: 2020/11/29
 toc: true
 excerpt: "Generally, we can read abi file by Biopython and Plot result with matplotlib."
-tags: [Python, Biopython, matplotlib]
+tags: [Data, Biopython, Sanger Sequencing]
 category: [Python, Bio]
 cover: 'https://biopython.org/assets/images/biopython_logo_white.png'
 thumbnail: 'https://biopython.org/assets/images/biopython_logo_white.png'
