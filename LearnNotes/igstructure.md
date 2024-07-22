@@ -70,6 +70,10 @@ The Kabat definition is based on sequence variability and is the most commonly u
 
 How to make it in python:
 
+```bash
+conda install bioconda::abnumber
+```
+
 ```python
 import pandas as pd
 from abnumber import Chain
