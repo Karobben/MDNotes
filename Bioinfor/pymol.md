@@ -208,3 +208,50 @@ pre {
   color: #5fd381;
 }
 </style>
+
+## Distance
+
+In pymol, you cannot calculate the distance between 2 residues. You can only do it on molecules. For calculate the distance between 2 residues, we could use alpha carbon (CA) as the reference 
+
+```pymol
+distance my_distance, 1tzg and chain P and resi 4 and name CA, 1tzg_H_L_P and chain H and resi 50 and name CA
+```
+
+For searching the nearest distance between 2 residues, a easiest way is using python pymol module.
+But when if you could use python, than, maybe Biopython could be a better choice.
+
+```python
+from pymol import cmd
+
+# Load the structures (skip if already loaded)
+cmd.load("1tzg.pdb")
+cmd.load("1tzg_H_L_P.pdb")
+
+# Select atoms in the specified residues
+residue1 = "1tzg and chain P and resi 4"
+residue2 = "1tzg_H_L_P and chain H and resi 50"
+
+# Get atom identifiers for both residues
+atoms1 = cmd.get_model(residue1).atom
+atoms2 = cmd.get_model(residue2).atom
+
+# Iterate over all atom pairs and calculate distances
+MIN = 1000
+for atom1 in atoms1:
+    for atom2 in atoms2:
+        distance = cmd.get_distance(f"{residue1} and name {atom1.name}", f"{residue2} and name {atom2.name}")
+        print(f"Distance between {atom1.name} in residue {atom1.resi} and {atom2.name} in residue {atom2.resi}: {distance:.2f} Å")
+        if distance <= MIN:
+            MIN = distance 
+```
+
+
+## Zoom
+
+In pymol, you could zoom into a specific residues. Those different codes works differently. But they could achieve similar effects.
+
+```pymol
+zoom 1tzg and chain A and resi 51
+center 1tzg and chain A and resi 51
+orient 1tzg and chain A and resi 51
+```
