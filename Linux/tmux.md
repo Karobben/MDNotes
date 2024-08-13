@@ -35,6 +35,9 @@ Panes: Each window could split into small panes which is the key feature for tmu
 | Split Window horizontal | `ctrl`-`b` + `"` |
 | Split Window Vertical| `ctrl`-`b` + `%` |
 | Resize the width of the Panes | `ctrl`-`b` + `ctrl`-`→` |
+| Show pane ID| `ctrl`-`b` + `q`|
+| Show the window and pane ID| `ctrl`-`b` + `w`|
+
 
 Tips:
 1. Panes resize:
