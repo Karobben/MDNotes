@@ -41,7 +41,6 @@ The advantage of DBscan is
 - Outlier points (Noises) is tolerated. (Unlike k-means)
 - It can detect the cluster under a cluster. (Not like spherical-shape cluster)
 
-
 ## DNscan in python
 
 Source codes: [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html)
@@ -65,13 +64,15 @@ More examples: from SKlearn
 |:-:|
 [![Click me to show more](https://scikit-learn.org/stable/_images/sphx_glr_plot_cluster_comparison_001.png)](https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html#sphx-glr-auto-examples-cluster-plot-cluster-comparison-py)|
 
-
 ## UMAP
+
+Insatll:
+    - `conda install -c conda-forge umap-learn`
+    - `pip install umap-learn`
 
 ```python
 from umap import UMAP
 import plotly.express as px
-
 
 features = np.array(df)
 
@@ -81,7 +82,6 @@ umap_3d = UMAP(n_components=3, init='random', random_state=0)
 proj_2d = umap_2d.fit_transform(features)
 proj_3d = umap_3d.fit_transform(features)
 ```
-
 
 ## t-SNE
 
@@ -101,7 +101,6 @@ fig = px.scatter(
 fig.update_layout({"plot_bgcolor": 'rgba(0, 0, 0, 0)'})
 fig.show()
 ```
-
 
 ## K-Means
 
@@ -199,7 +198,6 @@ plt.show()
 |![](https://s1.ax1x.com/2022/03/19/qAnV3T.png)|![ ](https://s1.ax1x.com/2022/03/19/qAn8C6.png)|
 |:-:|:-:|
 | `n_clusters=13` | `n_clusters=4`|
-
 
 ## OPTICS cluster
 
