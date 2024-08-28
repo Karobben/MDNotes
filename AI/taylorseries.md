@@ -8,8 +8,8 @@ title: 'Understanding the Taylor Series and Its Applications in Machine Learning
 ytitle: 'Understanding the Taylor Series and Its Applications in Machine Learning'
 description:
 excerpt: "The Taylor Series is a mathematical tool that approximates complex functions with polynomials, playing a crucial role in machine learning optimization. It enhances gradient descent by incorporating second-order information, leading to faster and more stable convergence. Additionally, it aids in linearizing non-linear models and informs regularization techniques. This post explores the significance of the Taylor Series in improving model training efficiency and understanding model behavior."
-tags: [math]
-category: []
+tags: [Math]
+category: [Machine Learning, Math]
 cover: "https://imgur.com/20cgEEk.png"
 thumbnail: "https://imgur.com/20cgEEk.png"
 ---

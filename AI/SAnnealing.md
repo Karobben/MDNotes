@@ -8,8 +8,8 @@ title: "Simulated Annealing (SA)"
 ytitle: "Simulated Annealing (SA)"
 description: ""
 excerpt: "Simulated Annealing (SA) is a probabilistic technique used for finding an approximate solution to an optimization problem. It is particularly useful for problems where the search space is large and complex, and other methods might get stuck in local optima."
-tags: [Math, Algorithm]
-category: [AI, Math]
+tags: [Math, Algorithm, Machine Learning]
+category: [Machine Learning, Math]
 cover: "https://imgur.com/uWGjeSm.png"
 thumbnail: "https://imgur.com/uWGjeSm.png"
 ---

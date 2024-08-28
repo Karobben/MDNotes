@@ -9,7 +9,7 @@ ytitle: "AI Tools for Protein Structures"
 description: "AI Tools for Protein Structures"
 excerpt: "AI Tools for Protein Structures"
 tags: [AI, Machine Learning, 3D, Protein Structure]
-category: [AI, LM, Protein]
+category: [Machine Learning, LM, Protein]
 cover: "https://imgur.com/LDfRQBk.png"
 thumbnail: "https://imgur.com/WhX0s7Q.png"
 ---
