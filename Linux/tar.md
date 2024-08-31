@@ -30,7 +30,6 @@ priority: 10000
 |.tar.bz|jxvf|
 |.tar.Z|.tar.Z|.tar.Z|
 
-
 ## Tar with ssh to substitute scp
 
 This pipe could help you upload large files much faster than `scp`. It is a very good way to substitute `scp`.
@@ -91,13 +90,43 @@ tar cf - Mutation/Raw_VCF | (cd /media/Side/ken/; tar xvf -)
 
 And it only takes roughly 2 minutes.
 
-
 ## gzip
 
 - Compress:
 `gzip -cr 220725_KEGG  > KEGG.gz`
 - Decompress:
 `gzip -d KEGG.gz`
+
+## Tar with multiple threads
+
+Resource: [Artem S. Tashkinov, 2020](https://unix.stackexchange.com/questions/608207/how-to-use-multi-threading-for-creating-and-extracting-tar-xz)
+
+```bash
+# compress 
+tar -c -I 'xz -9 -T0' -f archive.tar.xz [list of files and folders]
+# decompress
+tar -x -I xz -f archive.tar.xz
+```
+
+1. **`tar`**:
+   - `tar` stands for "tape archive" and is a command-line utility used to create, extract, or manipulate tarball archives, which are collections of files and directories bundled together into a single file.
+
+2. **`-c`**:
+   - This flag tells `tar` to **create** a new archive.
+
+3. **`-I 'xz -9 -T0'`**:
+   - The `-I` option allows you to specify a compression program to use. In this case, `'xz -9 -T0'` is being used.
+     - **`xz`**: This is the program used for compression. `xz` is a lossless data compression tool that is highly efficient.
+     - **`-9`**: This option tells `xz` to use the maximum compression level (9). This will result in the smallest possible archive size, though it may take more time to compress.
+     - **`-T0`**: This option tells `xz` to use all available CPU threads to perform the compression. `0` dynamically chooses the number of threads based on the number of available CPU cores. This makes the compression faster on multi-core systems.
+
+4. **`-f archive.tar.xz`**:
+   - The `-f` option allows you to specify the **name** of the archive file you're creating. In this case, the archive is named `archive.tar.xz`.
+   - **`archive.tar.xz`**: This is the name of the output file. The `.tar.xz` extension indicates that it's a tarball compressed with `xz`.
+
+5. **`[list of files and folders]`**:
+   - This is a placeholder for the actual files and directories you want to include in the archive. You would replace this with a list of the files and directories you wish to compress into the archive.
+
 
 
 
