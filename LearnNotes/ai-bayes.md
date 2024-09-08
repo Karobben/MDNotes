@@ -131,6 +131,174 @@ One of the biggest challenge for Bayes is it can't handle unobserved situation.
 - Notice that
   $$ P(W = \text{OOV}) + \sum_w P(W = w) = 1 $$
 
+## Naïve Bayes for Numerical Values
+
+For Numerical values, we could do regression first and calculate the possibilities of the feature based on the regression results. Here we take Gaussian-distribution data as example.
+
+### Simulate training data:
+
+```python
+import numpy as np
+
+def Gaussian_sm(mean, std_dev, num_samples = 1000, seed = 0):
+    # Simulate a set of Gaussian-distribution by mean and std 
+    np.random.seed(seed)
+    return np.random.normal(mean, std_dev, num_samples)
+
+X1_Set1 = Gaussian_sm(0, 1, 1000, 0)
+X1_Set2 = Gaussian_sm(2, 1, 1000, 1)
+
+X = np.concatenate([X1_Set1.reshape(-1, 1), X1_Set2.reshape(-1, 1)])
+y = np.array([0] * len(X1_Set1) + [1] *len(X1_Set2))
+```
+
+|![Simulated Gaussian-distribution sets](https://imgur.com/IOvcGnD.png)|
+|:-:|
+
+### Split data into training and test set
+
+```python
+import random
+
+# select 20% of data as test data set
+def DataSplit(X, y, rate = .2):
+    random.seed(0)
+    mask_test = random.sample(range(X.shape[0]), int(X.shape[0]*.2))
+    mask_train = [i for i in range(X.shape[0]) if i not in mask_test] 
+    X_train = X[mask_train]
+    y_train = y[mask_train]
+    X_test  = X[mask_test]
+    y_test  = y[mask_test]
+    return X_train, y_train, X_test, y_test
+
+X_train, y_train, X_test, y_test = DataSplit(X, y)
+```
+
+### Calculate Mean and std for each set in training data set
+
+```python
+def CalculateMeanStd(X_train):
+    mean = [] 
+    std = []
+    for i in set(y_train):
+        mean += [np.mean(X_train[y_train == i], axis=0)]
+        std  += [np.std(X_train[y_train == i], axis=0)]
+    return np.array(mean).T, np.array(std).T
+
+mean, std = CalculateMeanStd(X_train)
+```
+
+### Function for calculating the density in Gaussian:
+
+You can calculate the probability density of a value \( x \) in a Gaussian distribution using the **probability density function (PDF)** of the normal distribution. The formula is:
+
+$$
+f(x | \mu, \sigma) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x - \mu)^2}{2 \sigma^2}}
+$$
+
+Where:
+- $ x $ is the value you are evaluating.
+- $ \mu $ is the mean of the distribution.
+- $ \sigma $ is the standard deviation of the distribution.
+
+```python
+
+def gaussian_probability_density(x, mean, std):
+    # Calculate the probability density using the Gaussian formula
+    exponent = -(np.array([x - i for i in mean.T]) **2) / (2 * std.T.reshape(2, -1, x.shape[1]) ** 2)
+    posb = (1 / (std.T.reshape(2, -1, x.shape[1]) * np.sqrt(2 * np.pi))) * np.exp(exponent)
+    return posb.prod(axis=2).T
+
+probability = gaussian_probability_density(X_test, mean, std)
+probability[:4]
+```
+<pre>
+array([[2.52243058e-03, 2.37361612e-01],
+       [1.59978264e-01, 1.07963005e-03],
+       [2.85861680e-03, 2.46842341e-01],
+       [1.55356019e-01, 3.11973217e-01]])
+</pre>
+
+This is the possibilities of data from X_test in class 0 or 1. For quick count the accuracy, we could do:
+
+```python
+from collections import Counter
+Counter(probability.argmax(axis =1) == y_test)
+```
+<pre>
+Counter({True: 343, False: 57})
+</pre>
+
+According to this results, we could know that the accuracy of this model is ==85.75%==
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8, 3))
+color ={0: 'salmon', 1: 'steelblue'}
+plt.scatter(X_test.flatten(), y_test,  c = [color[i] for i in probability.argmax(axis =1)], alpha = .7)
+plt.xlabel('Feature')
+plt.ylabel('Real class')
+plt.show()
+plit.close()
+```
+
+|![NBC predicted resutls](https://imgur.com/PsDuRaS.png)|
+|:-:|
+
+As you can see, it perfectly find the best threads which is near the 1.
+
+
+### Multiple Features
+
+In the example above, we only test for the single features. Similarly, we could calculate the possibilities by each when we have multiple features. And we multiple all the possibilities at the end.
+
+$$ P(X = x | Y = y) \approx \prod_{i=1}^{n} P(W = w_i | Y = y) $$
+
+For example, we have 3 features:
+
+```python
+
+# data simulate
+X1_Set1 = Gaussian_sm(0, 1, 1000, 1)
+X1_Set2 = Gaussian_sm(2, 1, 1000, 1)
+X2_Set1 = Gaussian_sm(0, 1, 1000, 2)
+X2_Set2 = Gaussian_sm(2, 1, 1000, 2)
+X3_Set1 = Gaussian_sm(0, 1, 1000, 3)
+X3_Set2 = Gaussian_sm(2, 1, 1000, 3)
+
+X = np.array([np.concatenate([X1_Set1, X1_Set2]),
+              np.concatenate([X2_Set1, X2_Set2]),
+              np.concatenate([X3_Set1, X3_Set2])]).T
+y = np.array([0] * len(X1_Set1) + [1] *len(X1_Set2))
+
+# split data
+X_train, y_train, X_test, y_test = DataSplit(X, y)
+# Calculate Mean and std 
+mean, std = CalculateMeanStd(X_train)
+# run the prediction 
+probability = gaussian_probability_density(X_test, mean, std)
+Counter(probability.argmax(axis =1) == y_test)
+```
+<pre>
+Counter({True: 388, False: 12})
+</pre>
+
+According to this result, when we increasing the features by simply added 2 more duplicates, the accuracy is increased from 85.75% into 97%. After visualized the results based on the first 2 features and given different shape based on the true classes, different color into predicted classes, almost all of the results in the overlap region are correct, too.
+
+```python
+# visualize the result bay first 2 features.
+mask1 = y_test==0
+mask2 = y_test!=0
+
+Shape = {0:'s', 1:'o'}
+plt.scatter(X_test[:,0][mask1], X_test[:,1][mask1], c = [color[i] for i in probability.argmax(axis = 1)[mask1]], marker = 's', alpha = .7)
+plt.scatter(X_test[:,0][mask2], X_test[:,1][mask2], c = [color[i] for i in probability.argmax(axis = 1)[mask2]], marker = 'o', alpha = .7)
+plt.show()
+```
+
+|![Multiple Features NBC](https://imgur.com/8hnNM3h.png)|
+|:-:|
 
 
 ## Bayesian Networks
