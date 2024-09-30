@@ -193,3 +193,68 @@ pre {
   color: #5fd381;
 }
 </style>
+
+## Submodule
+
+In github, you could add entire another repository here with submodule:
+```bash
+git submodule add  git@github.com:Karobben/20240501_PacBio_lib_assmb_screening.git
+```
+
+How to remove the submodule?
+
+To remove a submodule from a Git repository, you'll need to follow a series of steps to cleanly remove all traces of the submodule from your repository. Here's how to do it:
+
+### 1. **Deinitialize the Submodule**
+   First, you need to deinitialize the submodule to remove its configuration. Run the following command:
+
+   ```bash
+   git submodule deinit -f path/to/submodule
+   ```
+
+   Replace `path/to/submodule` with the actual path to the submodule.
+
+### 2. **Remove the Submodule from the `.gitmodules` File**
+   The `.gitmodules` file in the root of your repository contains the configuration for all submodules. You need to remove the corresponding entry of the submodule you want to delete.
+
+   Open the `.gitmodules` file in a text editor and remove the section corresponding to the submodule. It will look something like this:
+
+   ```ini
+   [submodule "path/to/submodule"]
+   	path = path/to/submodule
+   	url = https://github.com/user/repo.git
+   ```
+
+   Save and close the file after removing the relevant section.
+
+### 3. **Remove the Submodule Directory from the Working Tree**
+   After removing the entry from `.gitmodules`, you can remove the submodule directory from your working tree:
+
+   ```bash
+   rm -rf path/to/submodule
+   ```
+
+### 4. **Remove the Submodule from the Git Index**
+   Finally, you need to remove the submodule from the Git index (staging area). Run the following command:
+
+   ```bash
+   git rm -f path/to/submodule
+   ```
+
+   This command will remove the submodule from your repository's index, which means it will be removed in the next commit.
+
+### 5. **Commit the Changes**
+   Now that you've removed the submodule, commit the changes:
+
+   ```bash
+   git commit -m "Remove submodule path/to/submodule"
+   ```
+
+### 6. **Remove the Submodule Directory from the Git Directory**
+   As an optional cleanup step, you can remove the submodule's entry in the `.git/config` file and the submodule directory inside the `.git` folder. The commands below accomplish this:
+
+   ```bash
+   rm -rf .git/modules/path/to/submodule
+   ```
+
+This sequence of commands will completely remove the submodule from your repository. If you push these changes to a remote repository, the submodule will also be removed from there.

@@ -1,7 +1,7 @@
 ---
-title: "numpy"
-description: "numpy"
-url: numpy2
+title: "General Skills for Numpy"
+description: "General Skills for Numpy"
+url: numpy
 date: 2020/09/12
 toc: true
 excerpt: "Basic grammar of numpy"
@@ -12,16 +12,18 @@ covercopy: '<a href="https://towardsdatascience.com/python-libraries-for-natural
 thumbnail: 'https://tse4-mm.cn.bing.net/th/id/OIP.uTOM2B_iUkko5GTxOa3c-wAAAA'
 priority: 10000
 ---
-## np array
 
-###  np arry to list
+
+
+##  np arry to list
+
 ```python
 import numpy as np
 
 List = arry.tolist()
 ```
 
-### Create a list
+## Create a list
 
 ```python
 print(np.linspace(0, 100, 51))
@@ -33,23 +35,21 @@ print(np.linspace(0, 100, 51))
   84.  86.  88.  90.  92.  94.  96.  98. 100.]
 </pre>
 
-## np arrary caculating
 
-###  np.arrary sum()
 ```python
+# np.arrary sum()
 np.sum(array1-array2)
+np.mean()
 ```
 
-##  np arrary append
 
-
-###  append
+##  append
 
 ```python
 np.append(np1, np2,axis=0)
 ```
 
-### Reduce Dimension
+## Reduce Dimension
 
 ```python
 x = np.array([[1, 2],[3, 4]])
@@ -59,25 +59,19 @@ print(np.ravel(x,'F'))
 
 ## Locating (argwhere)
 
-
 ```python
 arr = np.random.randint(0,10, (3,4))  
 index = np.argwhere(arr < 5)
 index2 = np.where(arr < 5)
 
->>> index
-array([[0, 2],
-       [0, 3],
-       [1, 1],
-       [2, 0],
-       [2, 3]])
->>> index2
-(array([0, 0, 1, 2, 2]), array([2, 3, 1, 0, 3]))
+# quick way to find the max and min:
+arr.argmax()
+arr.argmin()
 ```
 
 ## Axis
 
-### Axis flip / swap
+## Axis flip / swap
 
 ```python
 frame2 = frame.swapaxes(0,1)

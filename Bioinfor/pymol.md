@@ -245,7 +245,6 @@ for atom1 in atoms1:
             MIN = distance 
 ```
 
-
 ## Zoom
 
 In pymol, you could zoom into a specific residues. Those different codes works differently. But they could achieve similar effects.
@@ -255,3 +254,14 @@ zoom 1tzg and chain A and resi 51
 center 1tzg and chain A and resi 51
 orient 1tzg and chain A and resi 51
 ```
+
+## Location Moving
+
+### Transition
+
+```python
+# Moving the entire chain A 10 unit from 8a95 
+cmd.translate([10.0, 0.0, 0.0], '8a95 and chain A')
+cmd.rotate('z', 45, chain_to_move)
+```
+
