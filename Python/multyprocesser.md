@@ -64,11 +64,9 @@ for i in return_dict.values():
   print(i)
 ```
 
-
 ## why pool.join() is taking a long time
 
  If `pool.join()` takes a long time, it typically indicates that there are still ongoing tasks in the pool. The duration is largely determined by the longest task in the pool. Issues such as inter-process communication, waiting for shared resources, and insufficient CPU cores can also cause slowdowns.
-
 
 ## startmap()
 
@@ -115,3 +113,15 @@ FP_lst = [i for i in results if i[1] < 1]
 ```
 
 In this code, it cost 8.9s
+
+## Real Time Processes Bar
+
+Source: [pip install parallelbar](https://pypi.org/project/parallelbar/)
+```python
+from parallelbar import progress_imap, progress_map, progress_imapu
+
+if __name__=='__main__':
+	res = progress_map(foo, range(20), process_timeout=1.5, n_cpu=8)
+```
+
+![](https://pypi-camo.freetls.fastly.net/e1b275bb35b9047f0685ad3b8b5d595aa40c40a8/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f6475626f76696b6d61737465722f706172616c6c656c6261722f6d61696e2f676966732f66697273745f6261725f2e676966)

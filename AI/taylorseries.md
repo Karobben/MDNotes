@@ -7,8 +7,8 @@ date: 2024-08-09 17:40:44
 title: 'Understanding the Taylor Series and Its Applications in Machine Learning'
 ytitle: 'Understanding the Taylor Series and Its Applications in Machine Learning'
 description:
-excerpt: "The Taylor Series is a mathematical tool that approximates complex functions with polynomials, playing a crucial role in machine learning optimization. It enhances gradient descent by incorporating second-order information, leading to faster and more stable convergence. Additionally, it aids in linearizing non-linear models and informs regularization techniques. This post explores the significance of the Taylor Series in improving model training efficiency and understanding model behavior."
-tags: [Math]
+excerpt: "The Taylor Series is a mathematical tool that approximates complex functions with polynomials, playing a crucial role in machine learning optimization. It enhances gradient descent by incorporating second-order information, leading to faster and more stable convergence. Additionally, it aids in linearizing non-linear models and informs regularization techniques. This post explores the significance of the Taylor Series in improving model training efficiency and understanding model behavior. $$\\cos(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^n}{(2n)!} x^{2n}$$"
+tags: [Math, Data Science]
 category: [Machine Learning, Math]
 cover: "https://imgur.com/20cgEEk.png"
 thumbnail: "https://imgur.com/20cgEEk.png"
@@ -16,7 +16,6 @@ thumbnail: "https://imgur.com/20cgEEk.png"
 
 
 The Taylor Series is a fundamental mathematical tool that finds applications across various domains, including machine learning. In this post, we'll explore what the Taylor Series is, how it is used in machine learning, and the significant impact it can have on **optimizing** machine learning models. Here are some good videos to explain the basic of the Taylor Series: [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4), [Visualization of the Taylor Series](https://www.youtube.com/watch?v=LkLVMJQAj6A), [3 Applications of Taylor Series: Integrals, Limits, & Series](https://www.youtube.com/watch?v=EYjBnnUJTP8), and [Dear Calculus 2 Students, This is why you're learning Taylor Series](https://www.youtube.com/watch?v=eX1hvWxmJVE)
-
 
 ## **What is the Taylor Series?**
 
@@ -78,8 +77,6 @@ In practical applications, such as in computer graphics, signal processing, or p
 ### **Beyond Cosine: General Use in Trigonometric Functions**
 
 The approach used to approximate $ \cos(x) $ can also be applied to other trigonometric functions like $ \sin(x) $ and $ \tan(x) $. Each of these functions has its own Taylor Series expansion, enabling similar approximations and computational savings.
-
-
 
 ## **Applications of Taylor Series in Machine Learning**
 

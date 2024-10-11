@@ -7,7 +7,7 @@ date: 2024-09-29 20:11:25
 title: "Random Forest"
 ytitle: "Random Forest"
 description: "Random Forest"
-excerpt: "Random Forest is an ensemble machine learning algorithm that builds multiple decision trees during training and merges their outputs to improve accuracy and reduce overfitting. It is commonly used for both classification and regression tasks. By averaging the predictions of several decision trees, Random Forest reduces the variance and increases model robustness, making it less prone to errors from noisy data."
+excerpt: "Random Forest is an ensemble machine learning algorithm that builds multiple decision trees during training and merges their outputs to improve accuracy and reduce overfitting. It is commonly used for both classification and regression tasks. By averaging the predictions of several decision trees, Random Forest reduces the variance and increases model robustness, making it less prone to errors from noisy data.  $$\\text{Entropy}_{\\text{after}} = \\frac{|S_l|}{|S|}\\text{Entropy}(S_l) + \\frac{|S_r|}{|S|}\\text{Entropy}(S_r)$$"
 tags: [Machine Learning, Data Science]
 category: [Notes, Class, UIUC, AI]
 cover: "https://serokell.io/files/vz/vz1f8191.Ensemble-of-decision-trees.png"

@@ -7,7 +7,7 @@ date: 2024-08-16 15:41:30
 title: "Kernel Density Estimation (KDE)"
 ytitle: "Kernel Density Estimation (KDE)"
 description: "Kernel Density Estimation (KDE)"
-excerpt: "Kernel Density Estimation (KDE) is a non-parametric method to estimate the probability density function (PDF) of a random variable based on a finite set of data points. Unlike parametric methods, which assume that the underlying data follows a specific distribution (like normal, exponential, etc.), KDE makes no such assumptions and can model more complex data distributions."
+excerpt: "Kernel Density Estimation (KDE) is a non-parametric method to estimate the probability density function (PDF) of a random variable based on a finite set of data points. Unlike parametric methods, which assume that the underlying data follows a specific distribution (like normal, exponential, etc.), KDE makes no such assumptions and can model more complex data distributions.$$ \\hat{f}(x) = \\frac{1}{n \\cdot h} \\sum_{i=1}^{n} K\\left(\\frac{x - x_i}{h}\\right) $$"
 tags: [Regression, Machine Learning]
 category: [Machine Learning, Regression]
 cover: 'https://imgur.com/Tr6nMEI.png'
@@ -58,8 +58,6 @@ Imagine you have a dataset of people's heights. Rather than assuming the heights
 - **Anomaly Detection**: KDE can be used to detect outliers by identifying areas of low probability density.
 - **Density-Based Clustering**: In clustering methods like DBSCAN, KDE can help define regions of high density.
 
-
-
 ## How Do It in Python
 
 
@@ -96,7 +94,6 @@ plt.show()
 |![KDE plot](https://imgur.com/Tr6nMEI.png)|
 |:-:|
 ||
-
 
 ## Save and Load the Model
 

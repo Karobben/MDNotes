@@ -34,11 +34,9 @@ git pull --rebase IO master
 git push -u IO master
 ```
 
-
 ## Avoid password everytime
 
 [Click me](https://luanlengli.github.io/2019/04/07/git-pull%E5%85%8D%E5%AF%86%E7%A0%81%E9%85%8D%E7%BD%AE.html)
-
 
 ## when uploading file is to big
 
@@ -65,8 +63,6 @@ $ cat .gitignore
 - An asterisk "*" matches anything except a slash. 
 - A trailing "/**" matches everything inside. For example, "abc/**" matches all files inside directory "abc", relative to the location of the .gitignore file, with infinite depth.
 - A slash followed by two consecutive asterisks then a slash matches zero or more directories. For example, "a/**/b" matches "a/b", "a/x/b", "a/x/y/b" and so on.
-
-
 
 ## Delete large files
 
@@ -258,3 +254,7 @@ To remove a submodule from a Git repository, you'll need to follow a series of s
    ```
 
 This sequence of commands will completely remove the submodule from your repository. If you push these changes to a remote repository, the submodule will also be removed from there.
+
+## Branches
+
+- Delete branch: `git push origin --delete <remote-branch-name>`

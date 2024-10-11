@@ -33,14 +33,56 @@ $$
 where:
 
 $w_k, b_k$ are the weight vector and bias corresponding to class $k$, and the argmax function finds the element of the vector $wx$ with the largest value.
+There are a total of $v(d + 1)$ trainable parameters: the elements of the matrix $w$.
+
+### Example
+
+![](https://imgur.com/9kmw2fe.png)
+
+Consider a two -class classification problem, with
+-  $W^T_1 = [w_{1,1}, w_{1,2}] = [2,1]$
+-  $W^T_2 = [w_{2,1}, w_{2,2}] = [1,2]$
+
+Notice that in the two-class case, the equation
+
+$$
+f(x) = \text{argmax } Wx + b
+$$
+
+Simplifies to
+
+$$
+f(x) = 
+\begin{cases} 
+1 & \ if\ w_1^T x + b_1 > w_2^T x + b_2 \\\\
+2 & \ if\ w_1^T x + b_1 \leq w_2^T x + b_2 
+\end{cases}
+$$
+
+
+The class boundary is the line whose equation is
+$$
+(w_2 - w_1)^T x + (b_2 - b_1) = 0
+$$
+
+!!! note Extend: Multi-class linear classifier 
+
+    ![](https://imgur.com/TNWvhKX.png)
+    
+    The boundary between class $k$ and class $l$ is the line (or plane, or hyperplane) given by the equation
+
+|$f(x) = argmax Wx + b$| $(w_k - w_l)^T x + (b_k - b_l) = 0$|
+|:-:|:-:|
+
+The classification regions in a linear classifier are called Voronoi regions.
+A **Voronoi region** is a region that is
+• Convex (if $u$ and $v$ are points in the region, then every point on the line segment $\bar{u}\bar{v}$ connecting them is also in the region)
+• Bounded by piece-wise linear boundaries
+
 
 |Multi-class linear classifier||
 |:-|:-|
 |![](https://imgur.com/TNWvhKX.png)|$ f(\mathbf{x}) = \arg\max (W\mathbf{x} + \mathbf{b}) $ <br>The boundary between class \( k \) and class \( l \) is the line (or plane, or hyperplane) given by the equation: <li>$ (\mathbf{w}_k - \mathbf{w}_l)^T \mathbf{x} + (b_k - b_l) = 0 $|
-
-
-
-
 
 
 ## Gradient descent
@@ -50,9 +92,6 @@ Suppose we have training tokens $(x_i, y_i)$, and we have some initial class vec
 |||
 |:-:|:-:|
 |$w_1 \leftarrow w_1 - \eta \frac{\partial \mathcal{L}}{\partial w_1}$<br>$w_2 \leftarrow w_2 - \eta \frac{\partial \mathcal{L}}{\partial w_2}$ <br> ...where $\mathcal{L}$ is some loss function. What loss function makes sense?|![](https://imgur.com/YaSOBI6.png)
-
-
-
 
 ## Zero-one loss function
 
@@ -84,9 +123,6 @@ $$
 -\infty & f(\mathbf{x}) = y^- 
 \end{cases}
 $$
-
-
-
 
 ## One-hot vectors
 
@@ -123,6 +159,71 @@ $$
 $$
 
 ### Loss
+
+#### Exp2: Multi-Class
+
+Consider the classifier
+
+$$
+f(x) = 
+\begin{bmatrix}
+f_1(x) \\\\
+\vdots \\\\
+f_v(x)
+\end{bmatrix} =
+\begin{bmatrix}
+1_{\arg\max Wx=1} \\\\
+\vdots \\\\
+1_{\arg\max Wx=v}
+\end{bmatrix}
+$$
+
+... with 20 classes. Then some of the classifications might look like this.
+
+#### One-hot ground truth
+
+We can also use one-hot vectors to describe the ground truth. Let’s call the one-hot vector $y$, and the integer label $y$, thus 
+
+$$
+y = \begin{bmatrix}
+y_1 \\\\
+y_2 \\\\ \end{bmatrix} = \begin{bmatrix}
+1_{y=1} \\\\
+2_{y=2} \end{bmatrix}
+$$
+
+Ground truth might differ from classifier output.
+
+Instead of a one-zero loss, the perceptron uses a weird loss function that gives great results when differentiated. The perceptron loss function is:
+
+$$
+\ell(x, y) = (f(x) - y)^T (Wx + b)
+$$
+
+$$
+= \left[ f_1(x) - y_1, \ldots, f_v(x) - y_v \right]
+\left(\begin{bmatrix}
+W_{1,1} & \ldots & W_{1,d} \\\\
+\vdots & \ddots & \vdots \\\\
+W_{v,1} & \ldots & W_{v,d}
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\\\
+\vdots \\\\
+x_{d}
+\end{bmatrix}
++
+\begin{bmatrix}
+b_{1} \\\\
+\vdots \\\\
+b_{v}
+\end{bmatrix}\right)
+$$
+
+$$
+= \sum_{k=1}^{v} (f_k(x) - y_k)(W_k^T x + b_k)
+$$
+
 
 ## The perceptron loss
 
@@ -197,6 +298,27 @@ $$
 0 & \text{otherwise}
 \end{cases}
 $$
+
+### Special case: two classes
+
+If there are only two classes, then we only need to learn one weight vector, $w = w_1 - w_2$. We can learn it as:
+
+1. Compute the classifier output $\hat{y} = \arg\max_k (w_k^T x + b_k)$
+
+2. Update the weight vectors as:
+
+$$
+w \leftarrow 
+\begin{cases} 
+w - \eta x & \text{if } \hat{y} \neq y, y = 2 \\\\
+w + \eta x & \text{if } \hat{y} \neq y, y = 1 \\\\
+w & \text{if } \hat{y} = y
+\end{cases}
+$$
+
+where $\eta \approx 0.01$ is the learning rate. Sometimes we say $y \in \{1, -1\}$ instead of $y \in \{1,2\}$.
+
+
 
 
 

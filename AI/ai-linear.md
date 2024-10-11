@@ -76,7 +76,6 @@ x_{n}
 \end{bmatrix}
 $$
 
-
 ### Vector and Matrix Gradients
 The gradient of a scalar function with respect to a vector or matrix is:
 The symbol $\frac{\sigma f}{\sigma x_ 1}$ means "partial derivative of f with respect to *x~1~*"
@@ -158,7 +157,6 @@ $$ b \leftarrow b - \frac{\eta}{n} \sum_{i=1}^{n} \varepsilon_i $$
     - $ w \leftarrow w - \frac{\eta}{n} \sum_{i=1}^{n} \varepsilon_i x_i $
 - If $ \varepsilon_i $ is positive ($ f(x_i) > y_i $), then we want to ==reduce== $ f(x_i) $, so we make $ w $ less like $ x_i $
 - If $ \varepsilon_i $ is negative ($ f(x_i) < y_i $), then we want to ==increase== $ f(x_i) $, so we make $ w $ more like $ x_i $
-
 
 ### Gradient Descent
 
@@ -290,10 +288,7 @@ This is why selecting an appropriate batch size during machine learning training
 
 ---
 
-
 ## Perceptron
-
-Perceptron is invented before the loss function 
 
 ### Linear classifier: Definition
 
@@ -331,52 +326,6 @@ w_{v}^T x + b_{v}
 $$
 
 $w_k, b_k$ are the weight vector and bias corresponding to class $k$, and the argmax function finds the element of the vector $wx$ with the largest value.
-There are a total of $v(d + 1)$ trainable parameters: the elements of the matrix $w$.
-
-### Example
-
-![](https://imgur.com/9kmw2fe.png)
-
-Consider a two -class classification problem, with
--  $W^T_1 = [w_{1,1}, w_{1,2}] = [2,1]$
--  $W^T_2 = [w_{2,1}, w_{2,2}] = [1,2]$
-
-Notice that in the two-class case, the equation
-
-$$
-f(x) = \text{argmax } Wx + b
-$$
-
-Simplifies to
-
-$$
-f(x) = 
-\begin{cases} 
-1 & \ if\ w_1^T x + b_1 > w_2^T x + b_2 \\\\
-2 & \ if\ w_1^T x + b_1 \leq w_2^T x + b_2 
-\end{cases}
-$$
-
-
-The class boundary is the line whose equation is
-$$
-(w_2 - w_1)^T x + (b_2 - b_1) = 0
-$$
-
-!!! note Extend: Multi-class linear classifier 
-
-    ![](https://imgur.com/TNWvhKX.png)
-    
-    The boundary between class $k$ and class $l$ is the line (or plane, or hyperplane) given by the equation
-
-|$f(x) = argmax Wx + b$| $(w_k - w_l)^T x + (b_k - b_l) = 0$|
-|:-:|:-:|
-
-The classification regions in a linear classifier are called Voronoi regions.
-A **Voronoi region** is a region that is
-• Convex (if $u$ and $v$ are points in the region, then every point on the line segment $\bar{u}\bar{v}$ connecting them is also in the region)
-• Bounded by piece-wise linear boundaries
-
 
 ### Gradient descent
 
@@ -393,454 +342,137 @@ $$
 
 ...where $\mathcal{L}$ is some loss function. What loss function makes sense?
 
-![](https://imgur.com/YaSOBI6.png)
+## Transformation
 
-#### Zero-one loss function
+Transformations can be a powerful tool for addressing various issues with model assumptions or improving the model fit. Applying transformations can help meet the necessary assumptions of linear regression, which are linearity, constant variance, normality of residuals, and independence of errors.
 
+Common Transformations: **Log**, **Square Root**, **Inverse**, and **Box-Cox**
 
-The most obvious loss function for a classifier is its classification error rate,
 
-$$
-\mathcal{L} = \frac{1}{n} \sum_{i=1}^{n} \ell(f(x_i), y_i)
-$$
-
-Where $\ell(\hat{y}, y)$ is the zero-one loss function,
-
-$$
-\ell(f(x), y) =
-\begin{cases}
-0 & \text{if } f(x) = y \\\\
-1 & \text{if } f(x) \neq y
-\end{cases}
-$$
-
-
-#### Non-differentiable!
-
-The problem with the zero -one loss function is that it’s not differentiable:
-
-$$
-\frac{\partial \ell(f(x), y)}{\partial f(x)} = 
-\begin{cases} 
-0 & \text{if } f(x) \neq y \\\\
-+\infty & \text{if } f(x) = y^+ \\\\
--\infty & \text{if } f(x) = y^-
-\end{cases}
-$$
-
-
-Integer vectors: One-hot vectors, A one-hot vector is a binary vector in which all elements are 0 except for a single element that’s equal to 1.
-
-### One-hot vectors
-
-A one-hot vector is a binary vector in which all elements are 0 except for a single element that’s equal to 1.
-
-#### Exp1: Binary classifier
-
-
-$$
-f(x) = 
-\begin{bmatrix}
-f_1(x) \\\\
-f_2(x)
-\end{bmatrix} =
-\begin{bmatrix}
-1_{\arg\max Wx=1} \\\\
-1_{\arg\max Wx=2}
-\end{bmatrix}
-$$
-
-…where $1$ is called the “indicator function,” and it means:
-
-$$
-1_P = 
-\begin{cases}
-1\ \ \ P\ is\ true\\\\
-0\ \ \ P\ is\ false
-\end{cases}
-$$
-
-#### Exp2: Multi-Class
-
-Consider the classifier
-
-$$
-f(x) = 
-\begin{bmatrix}
-f_1(x) \\\\
-\vdots \\\\
-f_v(x)
-\end{bmatrix} =
-\begin{bmatrix}
-1_{\arg\max Wx=1} \\\\
-\vdots \\\\
-1_{\arg\max Wx=v}
-\end{bmatrix}
-$$
-
-... with 20 classes. Then some of the classifications might look like this.
-
-
-#### One-hot ground truth
-
-We can also use one-hot vectors to describe the ground truth. Let’s call the one-hot vector $y$, and the integer label $y$, thus 
-
-$$
-y = \begin{bmatrix}
-y_1 \\\\
-y_2 \\\\ \end{bmatrix} = \begin{bmatrix}
-1_{y=1} \\\\
-2_{y=2} \end{bmatrix}
-$$
-
-Ground truth might differ from classifier output.
-
-Instead of a one-zero loss, the perceptron uses a weird loss function that gives great results when differentiated. The perceptron loss function is:
-
-$$
-\ell(x, y) = (f(x) - y)^T (Wx + b)
-$$
-
-$$
-= \left[ f_1(x) - y_1, \ldots, f_v(x) - y_v \right]
-\left(\begin{bmatrix}
-W_{1,1} & \ldots & W_{1,d} \\\\
-\vdots & \ddots & \vdots \\\\
-W_{v,1} & \ldots & W_{v,d}
-\end{bmatrix}
-\begin{bmatrix}
-x_{1} \\\\
-\vdots \\\\
-x_{d}
-\end{bmatrix}
-+
-\begin{bmatrix}
-b_{1} \\\\
-\vdots \\\\
-b_{v}
-\end{bmatrix}\right)
-$$
-
-$$
-= \sum_{k=1}^{v} (f_k(x) - y_k)(W_k^T x + b_k)
-$$
-
-
-
-#### The perceptron loss
-
-The perceptron loss function is defined as:
-
-$$
-\ell(x, y) = \sum_{k=1}^{v} (f_k(x) - y_k)(W_k^T x + b_k)
-$$
-
-Notice that:
-
-$$
-(f_k(x) - y_k) = 
-\begin{cases} 
-+1 & \text{if } f_k(x) = 1, y_k = 0 \\\\
--1 & \text{if } f_k(x) = 0, y_k = 1 \\\\
-0 & \text{otherwise}
-\end{cases}
-$$
-
-So what the loss really means is:
-
-$$
-\ell(x, y) = (w_{\hat{y}}^T x + b_{\hat{y}}) - (w_y^T x + b_y)
-$$
-
-Where:
-
-- $y$ is the correct class label for this training token
-- $\hat{y} = \arg\max_k (w_k^T x + b_k)$ is the classifier output
-- $\ell(x, y) > 0$ if $\hat{y} \neq y$
-- $\ell(x, y) = 0$ if $\hat{y} = y$
-
-
-### Perceptron learning algorithm
-
-#### Gradient of the perceptron loss
-
-The perceptron loss function is:
-
-$$
-\ell(x, y) = (w_{\hat{y}}^T x + b_{\hat{y}}) - (w_y^T x + b_y)
-$$
-
-Its derivative is:
-
-$$
-\frac{\partial \ell(x, y)}{\partial w_k} = 
-\begin{cases} 
-x & \text{if } k = \hat{y} \\\\
--x & \text{if } k = y \\\\
-0 & \text{otherwise}
-\end{cases}
-$$
-
-#### The perceptron learning algorithm
-
-1. Compute the classifier output $\hat{y} = \arg\max_k (w_k^T x + b_k)$
-
-2. Update the weight vectors as:
-
-$$
-w_k \leftarrow w_k - \eta \frac{\partial \ell(x, y)}{\partial w_k} = 
-\begin{cases} 
-w_k - \eta x & \text{if } k = \hat{y} \\\\
-w_k + \eta x & \text{if } k = y \\\\
-w & \text{otherwise}
-\end{cases}
-$$
-
-where $\eta \approx 0.01$ is the learning rate.
-
-
-#### Special case: two classes
-
-If there are only two classes, then we only need to learn one weight vector, $w = w_1 - w_2$. We can learn it as:
-
-1. Compute the classifier output $\hat{y} = \arg\max_k (w_k^T x + b_k)$
-
-2. Update the weight vectors as:
-
-$$
-w \leftarrow 
-\begin{cases} 
-w - \eta x & \text{if } \hat{y} \neq y, y = 2 \\\\
-w + \eta x & \text{if } \hat{y} \neq y, y = 1 \\\\
-w & \text{if } \hat{y} = y
-\end{cases}
-$$
-
-where $\eta \approx 0.01$ is the learning rate. Sometimes we say $y \in \{1, -1\}$ instead of $y \in \{1,2\}$.
-
-## Softmax
-
-
-Key idea: $f_c(x) =$ posterior probability of cass $c$
-
-- A perceptron has a one-hot output vector, in which $f_c(x) = 1$ if the
-neural net thinks $c$ is the most likely value of $y$, and 0 otherwise
-- A softmax computes $f_c(x) \approx Pr(Y =c |x)$. The conditions for this to be true are:
-    - It needs to satisfy the axioms of probability:
-        $$ 0 \leq f_c(x) \leq 1, \quad \sum_{c=1}^{v} f_c(x) = 1$$
-    - The weight matrix, $W$, is trained using a loss function that encourages $f(x)$ to approximate posterior probability of the labels on some training dataset:
-    $$f_c(x) \approx \Pr(Y = c|x)$$
-
-### Softmax satisfies the axioms of probability
-
-- Axiom #1, probabilities are non-negative $(f_k(x) \geq 0)$. There are many ways to do this, but one way that works is to choose:
-  
+- **Box-Cox Transformation:**
+  The Box-Cox transformation $ y_i^{(bc)} $ is defined as:
   $$
-  f_c(x) \propto \exp(w_c^T x + b_c)
+  y_i^{(bc)} = \begin{cases} 
+    \frac{y_i^\lambda - 1}{\lambda} & \text{if } \lambda \neq 0 \\\\
+    \ln(y_i) & \text{if } \lambda = 0 
+  \end{cases}
   $$
+  - This transformation is defined for $ y_i \geq 0 $.
+  - It requires choosing an appropriate $ \lambda $, which can be done using statistical libraries that maximize the likelihood or minimize skewness.
 
-- Axiom #2, probabilities should sum to one $(\sum_{k=1}^{v} f_k(x) = 1)$. This can be done by normalizing:
-
-$$
-f(x) = [f_1(x), ..., f_v(x)]^T
-$$
-$$
-f_c(x) = \frac{\exp(w_c^T x + b_c)}{\sum_{k=0}^{v-1} \exp(w_k^T x + b_k)}
-$$
-
-where $w_k^T$ is the $k^{th}$ row of the matrix $W$.
-
-### The logistic sigmoid function
-
-For a two-class classifier, we don’t really need the vector label. If we define $w = w_2 - w_1$ and $b = b_2 - b_1$, then the softmax simplifies to:
-
-$$
-f(Wx + b) = 
-\begin{bmatrix}
-\text{Pr}(Y = 1|x) \\\\
-\text{Pr}(Y = 2|x)
-\end{bmatrix} =
-\begin{bmatrix}
-\frac{1}{1+e^ {-(w^ Tx+b)}} \\\\
-\frac{e^ {-(w^ Tx+b)}}{1+e^ {-(w^ Tx+b)}}
-\end{bmatrix} =
-\begin{bmatrix}
-\sigma(w^Tx + b) \\\\
-1 - \sigma(w^Tx + b)
-\end{bmatrix}
-$$
-
-... so instead of the softmax, we use a scalar function called the logistic sigmoid function:
-
-$$
-\sigma(z) = \frac{1}{1+e^{-z}}
-$$
-
-This function is called sigmoid because it is S-shaped.
-
-For $z \to -\infty$, $\sigma(z) \to 0$
-
-For $z \to +\infty$, $\sigma(z) \to 1$
-
-### Gradient descent
-
-Suppose we have training tokens $(x_i, y_i)$, and we have some initial class vectors $w_1$ and $w_2$. We want to update them as
-
-$$
-w_1 \leftarrow w_1 - \eta \frac{\partial \mathcal{L}}{\partial w_1}
-$$
-
-$$
-w_2 \leftarrow w_2 - \eta \frac{\partial \mathcal{L}}{\partial w_2}
-$$
-
-...where $\mathcal{L}$ is some loss function. What loss function makes sense?
+- **Inverse Box-Cox Transformation:**
+  The inverse transformation, which is used to revert the transformed data back to its original scale, is given by:
+  $$
+  y_i = \begin{cases} 
+    \left( | \lambda y_i^{(bc)} + 1 |^{\frac{1}{\lambda}} \right) & \text{if } \lambda \neq 0 \\\\
+    e^{y_i ^{(bc)}} & \text{if } \lambda = 0 
+  \end{cases}
+  $$
+  - This transformation allows the original data values to be reconstructed from the transformed values, which is useful for interpretation and comparison with the original data scale after performing analyses or modeling on transformed data.
 
 
-### Zero-one loss function
+!!! note Choosing $ \lambda $**
+    The value of $ \lambda $ can significantly affect the skewness and homoscedasticity of the residuals in regression modeling. It is usually selected to maximize the log-likelihood function of obtaining the transformed data under a normal distribution assumption or through cross-validation procedures.
+    Tools like R and Python offer built-in functions to automatically find the optimal $ \lambda $ that best normalizes the data. For example, in R, the `boxcox` function from the MASS package can be used to estimate $ \lambda $.
 
-The most obvious loss function for a classifier is its classification error rate,
+### How to find the λ
 
-$$
-\mathcal{L} = \frac{1}{n} \sum_{i=1}^{n} \ell(\hat{f}(x_i), y_i)
-$$
+1. Cross-validation
+    - consider choices of at different scales, e.g.,
+    λ ∈ {10^−4^, 10^−3^ ,10^−2^ ,10^−1^ ,1,10}
+2. for each λ~i~,
+    - iteratively build new random Fold from Training Set
+        - fit Cross-Validation Train Set using
+        - compute MSE for current Fold on Validation set
+    - for each λ~i~ record average error σ and over all Folds
+3. λ with smallest error - largest λ within one σ.
 
-Where $\ell(\hat{y}, y)$ is the zero-one loss function,
+### Regularization 
 
-$$
-\ell(f(x), y) = 
-\begin{cases}
-0 & \text{if } f(x) = y \\\\
-1 & \text{if } f(x) \neq y
-\end{cases}
-$$
+**Regularization** involves adding a penalty to the loss function that a model minimizes. This penalty typically discourages complex models by imposing a cost on having larger parameter values, thereby promoting simpler, more robust models.
 
-The problem with zero-one loss is that it’s not differentiable.
+#### Types of Regularization
 
-### A loss function that learns probabilities
 
-Suppose we have a softmax output, so we want $f_c(x) \approx \Pr(Y = c|x)$. We can train this by learning $W$ and $b$ to maximize the probability of the training corpus. If we assume all training tokens are independent, we get:
+| **Type**         | **Description**                                           | **Effect**                        | **Equation**           |
+| ------: | :----------------------------|:------- |:---: |
+| L1 Regularization (Lasso) | Adds the absolute value of the magnitude of coefficients as a penalty term.   | Leads to sparse models where some weights are zero, effectively performing feature selection.  | $ L = \text{Loss} + \lambda \sum \|\beta_i\| $      |
+| L2 Regularization (Ridge) | Adds the squared magnitude of coefficients as a penalty term.     | Distributes weight more evenly across features, less robust to outliers than L1.               | $ L = \text{Loss} + \lambda \sum \beta_i^2 $                  |
+| Elastic Net      | Combination of L1 and L2 regularization.                                      | Balances feature selection and robustness, useful for correlated features. | $ L = \text{Loss} + \lambda_1 \sum \|\beta_i\|   + \lambda_2 \sum\beta_i^2 $                     |
+
+
+
+
+#### Role of Regularization in Modeling
+
+- **Preventing Overfitting**: By penalizing large coefficients, regularization reduces the model’s tendency to memorize training data, thus helping it to generalize better to new, unseen data.
+- **Stability**: Regularization can make the learning algorithm more stable by smoothing the optimization landscape.
+- **Handling Multicollinearity**: In regression, multicollinearity can make the model estimation unstable and sensitive to noise in the data. Regularization helps by constraining the coefficients path.
+
+#### Regularization and $\lambda$
+
+In regularization, $ \lambda $ (often called the regularization parameter) controls the strength of the penalty applied to the model. This is conceptually different from the $ \lambda $ used in transformations like Box-Cox, though both involve tuning a parameter to achieve better model behavior:
+
+- In **Box-Cox transformations**, $ \lambda $ is selected to normalize the distribution of a variable or make relationships more linear.
+- In **regularization**, $ \lambda $ adjusts the trade-off between fitting the training data well (low bias) and keeping the model parameters small (low variance).
+
+
+
+
+
+## Performance
+
+### Residuals and Standardized Residuals
+
+Residuals: $e = y - \hat{y} $
+Mean Square Error: $m = \frac{e^T e}{N}$
+
+
+The equation you provided is for the standardized residual $ S_i $ in the context of regression analysis. Here's a breakdown of the equation and its components:
+
+
+Standardized Residuals
 
 $$
-W, b = \underset{W,b}{\text{argmax}} \prod_{i=1}^{n} \Pr(Y = y_i|x_i) = \underset{W,b}{\text{argmax}} \sum_{i=1}^{n} \ln \Pr(Y = y_i|x_i)
+S_i = \frac{e_i}{\sigma} = \frac{e_i}{\sqrt{\frac{e^T e}{N} (1 - h_{i,i})}}
 $$
 
-But remember that $f_c(x) \approx \Pr(Y = c|x)$! Therefore, maximizing the log probability of training data is the same as minimizing the cross entropy between the neural net and the ground truth:
+- $ e_i $ is the residual for the $ i $-th observation, which is the difference between the observed value and the value predicted by the regression model.
+- $ \sigma $ is the estimated standard deviation of the residuals.
+- $ e^T e $ is the sum of squared residuals.
+- $ N $ is the number of observations.
+- $ h_{i,i} $ is the leverage of the $ i $-th observation, a measure from the hat matrix that indicates the influence of the $ i $-th observation on its own predicted value.
+
+### Explanation:
+
+1. **Standardized Residuals**: These are the residuals $ e_i $ normalized by an estimate of their standard deviation. Standardized residuals are useful for identifying outliers in regression analysis because they are scaled to have a variance of 1, except for their adjustment by the leverage factor.
+
+2. **Leverage $ h_{i,i} $**: The leverage is a value that indicates how far an independent variable deviates from its mean. High leverage points can have an unduly large effect on the estimate of regression coefficients.
+
+3. **Square Root Denominator**: The denominator of the standard deviation estimate involves the sum of squared residuals, which measures the overall error of the model, divided by the number of observations, adjusted for the leverage of each observation. This adjustment accounts for the fact that observations with higher leverage have a greater impact on the fit of the model and therefore should have less influence on the standardized residual.
+
+
+### R2
 
 $$
-W, b = \underset{W,b}{\text{argmin}} -\frac{1}{n} \sum_{i=1}^{n} \mathcal{L}_ i, \quad \mathcal{L}_ i = - \log f_ {y_ i}(x_ i)
+R^2 = \frac{\text{var}(\hat{y})}{\text{var}(y)}
 $$
 
-### Cross-entropy
+- $ \text{var}(y) = \frac{1}{N} \sum_{i=1}^N (y_i - \bar{y})^2 $
 
-This loss function:
 
-$$
-\mathcal{L} = - \ln f_{y}(x)
-$$
+### Cook’s distance
 
-is called cross-entropy. It measures the difference in randomness between:
+- **Coefficients and prediction with full training set**: $ y^{p} = X\hat{\beta} $
+- **Coefficients and prediction excluding item i from training set**: $ y_i^{p} = X\hat{\beta}_i $
+- **Cook's distance for point i:**
+  $$ \text{Cook's distance} = \frac{(y^{p} - y_i^ {p})^ T (y^{p} - y_i^{p})}{dm} $$
+  Where:
+  - $d$ is the number of predictors (features) in the model, degree of freedom.
+  - $m = \frac{e^T e}{N}$ is the mean squared error.
+  - $N$ is the number of observations in the dataset.
 
-- Truth: $Y = y$ with probability 1.0, $\ln(1.0) = 0$, minus the
-- Neural net estimate: $Y = y$ with probability $f_{y}(x)$.
 
-Thus
-
-$$
-\mathcal{L} = 0 - \ln f_{y}(x)
-$$
-
-### Gradient of the cross-entropy of the softmax
-
-Since we have these definitions:
-
-$$
-\mathcal{L} = - \ln f_{y}(x), \quad f_{y}(x) = \frac{\exp(z_{y})}{\sum_{k=1}^{v} \exp(z_{k})}, \quad z_{c} = w_c^T x + b_c
-$$
-
-Then:
-
-$$
-\frac{\partial \mathcal{L}}{\partial w_c} = \left( \frac{\partial \mathcal{L}}{\partial z_c} \right) \left( \frac{\partial z_c}{\partial w_c} \right) = \left( \frac{\partial \mathcal{L}}{\partial z_c} \right) x
-$$
-
-...where:
-
-$$
-\frac{\partial \mathcal{L}}{\partial z_c} =
-\begin{cases}
-f_{c}(x_i) - 1 & c = y \\\\
-f_{c}(x_i) & c \neq y
-\end{cases}
-$$
-
-### Similarity to linear regression
-
-For linear regression, we had:
-
-$$
-\frac{\partial \mathcal{L}}{\partial w} = \epsilon x, \quad \epsilon = f(x) - y
-$$
-
-For the softmax classifier with cross-entropy loss, we have
-
-$$
-\frac{\partial \mathcal{L}}{\partial w_c} = \epsilon_c x
-$$
-
-$$
-\epsilon_c =
-\begin{cases}
-f_c(x_i) - 1 & c = y \text{ (output should be 1)} \\\\
-f_c(x_i) & \text{otherwise (output should be 0)}
-\end{cases}
-$$
-
-### Similarity to perceptron
-
-Suppose we have a training token $(x, y)$, and we have some initial class vectors $w_c$. Using softmax and cross-entropy loss, we can update the weight vectors as
-
-$$
-w_c \leftarrow w_c - \eta \epsilon_c x
-$$
-
-...where
-
-$$
-\epsilon_c =
-\begin{cases}
-f_c(x_i) - 1 & c = y_i \\\\
-f_c(x_i) & \text{otherwise}
-\end{cases}
-$$
-
-In other words, like a perceptron,
-
-$$
-\epsilon_c =
-\begin{cases}
-\epsilon_c < 0 & c = y_i \\\\
-\epsilon_c > 0 & \text{otherwise}
-\end{cases}
-$$
-
-### Outline
-
-- Softmax: 
-  $$ f_c(x) = \frac{\exp(w_c^T x + b_c)}{\sum_{k=1}^{v} \exp(w_k^T x + b_k)} \approx \Pr(Y = c|x) $$
-
-- Cross-entropy: 
-  $$ \mathcal{L} = - \ln f_{y}(x) $$
-
-- Derivative of the cross-entropy of a softmax:
-  $$ \frac{\partial \mathcal{L}}{\partial w_c} = \epsilon_c x, \quad \epsilon_c = 
-  \begin{cases}
-    f_c(x_i) - 1 & c = y \text{ (output should be 1)} \\\\
-    f_c(x_i) & \text{otherwise (output should be 0)}
-  \end{cases} $$
-
-- Gradient descent:
-  $$ w_c \leftarrow w_c - \eta \epsilon_c x $$
 
 
 <style>
