@@ -12,9 +12,19 @@ thumbnail: 'https://tse3-mm.cn.bing.net/th/id/OIP.QohK_-okTvuh7r82wJlhNAHaE9?w=1
 priority: 10000
 ---
 
-## Download Software
+## apt
 
-<a name="QK6Hj"></a>
+apt, short for Advanced Package Tool, is a package management system commonly used in Debian-based Linux distributions like Ubuntu. It simplifies the process of installing, updating, and managing software packages on a system.
+
+Usually, we could do `apt insatll` or `sudo apt install`. In this case, commands would link into `/usr/bin` or `/usr/local/bin` which requires root permission. You could also use it to down load the `deb` file and download in local. Take a common software `tree` as an example:
+```bash
+apt download tree
+dpkg -x tree_2.1.1-2ubuntu3_amd64.deb tree
+```
+
+After that, you just need to export the bin from tree into the environment. 
+
+
 ## wget
 
 ```bash
@@ -22,7 +32,6 @@ wget -c ulr
 ```
 
 支持断点续传
-
 
 <a name="DowT6"></a>
 ## aria2c
