@@ -39,9 +39,16 @@ How to set:
 
 | | |
 | :---: | :-- |
-| ![Set pure background](https://imgur.com/tzw6RZl.png) | select "Render" → "Film" → "Transparent" | 
-| ![Set Compositing](https://imgur.com/1wfiJoY.png)| Set the Compositing. And that's it. Go to rendering and it woud add an Perfectwhite at the background|
+| ![Set pure background](https://imgur.com/UndFMUw.png) | select <li>"Render" → "Film" → "Transparent"<li>"Render" → "Color Management" → "View Transform" → "Starndard" | 
+| ![Set Compositing](https://imgur.com/jxy0bGJ.png)| Set the Compositing. And that's it. Go to rendering and it woud add an Perfectwhite at the background|
 
+
+## Different Colors in a Surface 
+
+|||
+|:-|:-|
+|![Settings in Geomitry](https://imgur.com/tTOeKDl.png)| The key idea for given different color is by rendern multiple layers of color on the surface. By reverse select residues , we could delete the colors from selected layer and expose the color from inner layer.| 
+|![Results](https://imgur.com/MGA9Mqk.png)| Final resutls show|
 
 
 ## Trouble Shoot
@@ -52,9 +59,6 @@ How to set:
 |---------------- | --------------- | --------------- |
 |![Befor Change](https://imgur.com/jCo5bO3.png)  | ![Change Setting](https://imgur.com/IaT6UlB.png) | ![After Correction](https://imgur.com/Zb3XWZz.png)    |
 
-
-||||||
-||
 
 
 <style>
