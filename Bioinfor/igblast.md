@@ -30,7 +30,6 @@ thumbnail: "https://imgur.com/vyMdRiw.png"
 
 IgBLAST is widely used in immunology and related fields for studying B cell and T cell receptor repertoire, which is crucial for understanding immune responses, vaccine development, and in the study of autoimmune diseases and cancer.
 
-
 ## Local Set Up
 
 - Basically, you can use the online service: [NCBI igblast](https://www.ncbi.nlm.nih.gov/igblast/)
@@ -49,13 +48,25 @@ pip3 install crowelab_pyir
 pyir setup
 ```
 
-In the `pyir`, it is using 'http' and download the data failed. By following the error code, we could find the script and alter the 'http' to 'https'. It should solving the problem. 
+!!! warning Error in setup
+    <pre>
+    During handling of the above exception, another exception occurred:
+    Traceback (most recent call last):
+      File <font color='red'>"/mnt/Data/PopOS/miniconda/envs/bio311/lib/python3.11/site-packages/crowelab_pyir/data/bin/setup_germline_library.py"</font>, line 112, in <module>
+        for line in urllib.request.urlopen(locus_url):
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    .
+    .
+    .
+    urllib.error.URLError: <urlopen error [Errno 110] Connection timed out>
+    </pre>
 
-An example of running the program:
+    In the `pyir`, it is using 'http' and download the data failed. By following the error code, we could find the script and alter the 'http' to 'https'. It should solving the problem.<br> 
+    In this case, I high light the most important part in the error code with red. For make a quick correction, we could run:
+    `sed -i 's/http:/https:/g' /mnt/Data/PopOS/miniconda/envs/bio311/lib/python3.11/site-packages/crowelab_pyir/data/bin/setup_germline_library.py` 
+
 
 1. prepare the DataBase
-
-
 2. run the blast
 ```bash
 igblastn -query result/test.fasta \
@@ -71,7 +82,6 @@ igblastn -query result/test.fasta \
 -germline_db_V <String> Germline database name
 -organism <String> The organism for your query sequence. Supported organisms include human, mouse, rat, rabbit and rhesus_monkey for Ig and human and mouse for TCR. Custom organism is also supported but you need to supply your own germline annotations (see IgBLAST web site for details) Default = `human'
 </pre>
-
 
 ## pyir
 
@@ -92,7 +102,6 @@ Key parameters:
 -r, --receptor {Ig,TCR}         The receptor you are analyzing, immunoglobulin or t cell receptor
 -s, --species {human,mouse...}  The Species you are analyzing {human,mouse,rabbit,rat,rhesus_monkey}
 </pre>
-
 
 ## Q&A
 

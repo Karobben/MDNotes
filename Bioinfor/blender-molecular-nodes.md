@@ -8,8 +8,8 @@ title: "Render Your Protein in Blender with Molecular Nodes"
 ytitle: "Render Your Protein in Blender with Molecular Nodes"
 description: "Render Your Protein in Blender with Molecular Nodes"
 excerpt: "Render Your Protein in Blender with Molecular Nodes"
-tags: []
-category: []
+tags: [Bioinformatics, Biochmistry, Biology, 3D, Plot]
+category: [Biology, Bioinformatics, Protein Structure]
 cover: "https://imgur.com/RZ6Pv2O.png"
 thumbnail: "https://imgur.com/RZ6Pv2O.png"
 ---
