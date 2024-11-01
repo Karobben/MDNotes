@@ -50,6 +50,12 @@ How to set:
 |![Settings in Geomitry](https://imgur.com/tTOeKDl.png)| The key idea for given different color is by rendern multiple layers of color on the surface. By reverse select residues , we could delete the colors from selected layer and expose the color from inner layer.| 
 |![Results](https://imgur.com/MGA9Mqk.png)| Final resutls show|
 
+## Multiple Style in One Object
+
+|![Blender Join Geometry](https://imgur.com/TVEMkDe.png)||
+|:-|:-|
+|![](https://imgur.com/AOUUkWK.png)| Like the example in the picture, it rendered both surface model and the stick model in one object. This is achieved by `Join Geometry` |
+
 
 ## Trouble Shoot
 
