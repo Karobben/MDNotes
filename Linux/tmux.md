@@ -11,6 +11,7 @@ cover: 'https://s1.ax1x.com/2020/06/26/NsmGxf.png'
 thumbnail: 'https://s1.ax1x.com/2020/06/26/NsmGxf.png'
 priority: 10000
 ---
+
 ## tmux2
 
 ![NsmGxf.png](https://s1.ax1x.com/2020/06/26/NsmGxf.png)
@@ -32,11 +33,12 @@ Panes: Each window could split into small panes which is the key feature for tmu
 
 | Moves    | Keys     |
 | :------------- | :------------- |
-| Split Window horizontal | `ctrl`-`b` + `"` |
-| Split Window Vertical| `ctrl`-`b` + `%` |
+| Split pane horizontal | `ctrl`-`b` + `"` |
+| Split pane Vertical| `ctrl`-`b` + `%` |
 | Resize the width of the Panes | `ctrl`-`b` + `ctrl`-`→` |
 | Show pane ID| `ctrl`-`b` + `q`|
 | Show the window and pane ID| `ctrl`-`b` + `w`|
+| move the Panes into right| `ctrl`-`b` + `{ `|
 
 
 Tips:

@@ -108,7 +108,6 @@ uuencode 附件名称 附件显示名称 | mail -s 邮件主题 发送地址
 ##例如： uuencode test.txt test.txt | mail -s Test test@126.com
 ```
 
-
 ## Release Cached RAM
 
 ```bash
@@ -134,7 +133,6 @@ byzanz-demo.gif 保存的文件名
 
 xwd -silent -root | convert xwd:- -crop 800x600+0+76 test.png
 ```
-
 
 ## for fun
 
@@ -229,9 +227,6 @@ rsync -avz --ignore-existing test2/*   wenkanl2@nicwulab-linux.life.illinois.edu
 # synchronize all files in test2 into the remote directory test
 ````
 
-
-
-
 ## 查看硬件
 <a name="IPgOq"></a>
 ### CPU
@@ -248,6 +243,36 @@ lspci | grep -i 'eth'
 lspci| grep -i vga  # Check the GPU at prsent
 ```
 
+## Disable Keys/Mouse
+
+We could use the `xinput list` to check all the input devices and disable it with `xinput disable $id` 
+
+```bash
+xinput list
+```
+
+<pre>
+⎡ Virtual core pointer                    	id=2	[master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
+⎜   ↳ LXDDZ JLab Epic Keys                    	id=12	[slave  pointer  (2)]
+⎜   ↳ LXDDZ JLab Epic Keys Consumer Control   	id=14	[slave  pointer  (2)]
+⎜   ↳ RH USB Gaming Mouse                     	id=18	[slave  pointer  (2)]
+⎜   ↳ RH USB Gaming Mouse Consumer Control    	id=20	[slave  pointer  (2)]
+⎜   ↳ TSTP MTouch                             	id=9	[slave  pointer  (2)]
+⎜   ↳ TSTP MTouch                             	id=10	[slave  pointer  (2)]
+⎣ Virtual core keyboard                   	id=3	[master keyboard (2)]
+</pre>
+
+```bash
+# disable the touch screen
+xinput disable 9 
+xinput disable 10
+```
+
+<pre>
+∼ TSTP MTouch                             	id=9	[floating slave]
+∼ TSTP MTouch                             	id=10	[floating slave]
+</pre>
 
 ## Mount remate file system
 

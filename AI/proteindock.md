@@ -14,8 +14,9 @@ cover: "https://imgur.com/lhLMGnt.png"
 thumbnail: "https://imgur.com/lhLMGnt.png"
 ---
 
+## Physical Based Docking
 
-## 1982: Dock; Kuntz, Irwin D., et al.[^dock] (Rigid body-shape based)
+### 1982: Dock; Kuntz, Irwin D., et al.[^dock] (Rigid body-shape based)
 
 |![Dock; Kuntz, Irwin D., et al. 1982](https://imgur.com/lsob6Ob.png)|
 |:-:|
@@ -68,9 +69,6 @@ In the first generation of the Dock, it focus on 2 rigid bodies. It treat 2 prot
 !!! note anchor-and-grow
     The “anchor-and-grow” conformational search algorithm. The algorithm performs the following steps: (1) DOCK perceives the molecule’s rotatable bonds, which it uses to identify an anchor segment and overlapping rigid layer segments. (2) Rigid docking is used to generate multiple poses of the anchor within the receptor. (3) The first layer atoms are added to each anchor pose, and multiple conformations of the layer 1 atoms are generated. An energy score within the context of the receptor is computed for each conformation. (4) The partially grown conformations are ranked by their score and are spatially clustered. The least energetically favorable and spatially diverse conformations are discarded. (5) The next rigid layer is added to each remaining conformation, generating a new set of conformations. (6) Once all layers have been added, the set of completely grown conformations and orientations is returned
 
-
-
-
 ### Compare to Other Related Tools
 
 <div class="c-article-table-container"><div class="c-article-table-border c-table-scroll-wrapper"><div class="c-table-scroll-wrapper__content c-table-scroll-wrapper__fade--transparent" data-component-scroll-wrapper=""><table class="data last-table"><thead class="c-article-table-head"><tr><th class="u-text-left "><p>Method</p></th><th class="u-text-left "><p>Ligand sampling method<sup>a</sup>
@@ -87,8 +85,6 @@ In the first generation of the Dock, it focus on 2 rigid bodies. It treat 2 prot
                       <li>
                                     <sup>d</sup>Additional accuracy can be added to the scoring function using implicit solvent models. The most commonly used options are distance dependent dielectric (DDD), a parameterized desolvation term (DS), generalized Born (GB) and linearized Poisson Boltzmann (PB)</li>
                     </ol></div></div>
-
-
 
 ### 2003: ZDock
 
@@ -124,8 +120,35 @@ On the other hand, I didn't find a way to mark the surface residues so we could 
 [Protein-Protein Docking Using Evolutionary Information](https://link.springer.com/protocol/10.1007/978-1-4939-7759-8_28)
 
 
+## Machine Learning Based Docking
+ 
+### 2021: DeepRank
 
 
+|Model Grpah Abstract|Model Name|
+|:-:|:-|
+|![DeepRank](https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41467-021-27396-0/MediaObjects/41467_2021_27396_Fig1_HTML.png)<br>© Chen, M., & Zhou, X| DeepRank|
+|![DeepRank-GNN](https://raw.githubusercontent.com/DeepRank/Deeprank-GNN/master/deeprank_gnn.png)<br>© Réau, M.| DeepRank-GNN|
+|![DeepRank2](https://github.com/DeepRank/deeprank2/raw/main/deeprank2.png)<br>© Crocioni, G.|Deeprank2|
+
+
+**DeepRank**[^Deeprank] is a [open source](https://github.com/DeepRank/deeprank) framework designed to analyze 3D protein-protein interfaces by using deep learning to capture spatial and biochemical features. The paper presents DeepRank's approach to transforming 3D structural data into 3D grids that a neural network can process. This setup allows DeepRank to identify interaction patterns, rank docking models, and predict binding affinities with high accuracy. It’s especially useful for discovering patterns in protein interfaces that might be overlooked with traditional scoring functions.
+
+In this model, it turn the **pdb into sql** for efficient processing. The interfacing residues **cut-off is 5.5 Å**. When find all interfacing atoms, they would be mapped into **3D grid using a **Gaussian mapping**. The target value is very flexible, too. You can using any kind of values, iRMSD, FNAT, or DockQ score for instance, as the target values (Predicted value). The data was stored as **hdf5** format which keep the efficiency and small storage size.
+
+DeepRank family:
+- **DeepRank**[^Deeprank]: 2021, Chen, M., et al.; It mapped the protein interfacing into a 3D grid and using CNN to train the regression model. It established the foundation of the architectural of DeepRank.
+    - In the DeepRank, it use information both from atom-level and residue-level. From the atom level, it calculates the atom density, charges, electrostatic energy, and VDW contacts. In residue-level, it included number of residue-residue contacts, buried surface area, and Position specific scoring matrix (PSSM)
+- **DeepRank-GNN**[^Deeprank_GNN]: 2023, Réau, M. et al.; from the same team replace the 3D grid based CNN into GNN which could avoid rotation challenge in 3D grid.
+    - The input information is very similar to the DeepRank. Instead of 3D grid, it relies on the adjacent matrix to build the network. In this time, the cut-off became 8.5 Å.
+    - It has more rich features like Distance, residue half sphere exposure, Residue depth (from biopython, MSMS)
+- **Deeprank_GNN_ESM**[^Deeprank_GNN_ESM]: 2024, Xu, X., et al.; The **PSSM** calculating requires sequence alignment which consumes lots of time. For generate the graph efficiently, they replaced the **PSSM** with **ESM** embedding vectors.
+- **DeepRank2**[^Deeprank2]: 2024, Crocioni, G., et al.; In the DeepRank2., it supports both 3D grid and graph network as inputs. It also integrated the [Deep-Mut](https://github.com/DeepRank/DeepRank-Mut) to do in silicon mutation screening.
+
+[^Deeprank]: [Renaud, N., Geng, C., Georgievska, S., Ambrosetti, F., Ridder, L., Marzella, D. F., ... & Xue, L. C. (2021). DeepRank: a deep learning framework for data mining 3D protein-protein interfaces. Nature communications, 12(1), 7068.](https://www.nature.com/articles/s41467-021-27396-0)
+[^Deeprank_GNN]: [Réau, M., Renaud, N., Xue, L. C., & Bonvin, A. M. (2023). DeepRank-GNN: a graph neural network framework to learn patterns in protein–protein interfaces. Bioinformatics, 39(1), btac759.](https://academic.oup.com/bioinformatics/article/39/1/btac759/6845451)
+[^Deeprank_GNN_ESM]: Xu, X., & Bonvin, A. M. (2024). DeepRank-GNN-esm: a graph neural network for scoring protein–protein models using protein language model. Bioinformatics advances, 4(1), vbad191.
+[^Deeprank2]: [Crocioni, G., Bodor, D. L., Baakman, C., Parizi, F. M., Rademaker, D. T., Ramakrishnan, G., ... & Xue, L. C. (2024). DeepRank2: Mining 3D Protein Structures with Geometric Deep Learning. Journal of Open Source Software, 9(94), 5983.](https://joss.theoj.org/papers/10.21105/joss.05983.pdf)
 
 
 

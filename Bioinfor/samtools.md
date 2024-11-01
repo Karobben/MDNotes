@@ -14,8 +14,6 @@ priority: 10000
 
 ## samtools
 
-- [x] s
-
 <style>
 span
     .tag {
@@ -25,7 +23,10 @@ span
 </style>
 
 ## Quick start
+
 ```bash
+samtools sort -@ 30  any.sam > sorted.bam
+samtools index sorted.bam
 samtools tview sorted.bam Trinity.fasta   -p "ID:35" -d T > result
 
 samtools tview sorted.bam ../../2-Trinity/Trinity.fasta   -p "comp0_c0_seq1:35" -d H > 123.html

@@ -45,16 +45,17 @@ Use Cases:
 ```python
 import h5py
 
-# Open the file
+# Open the file in read mode
 with h5py.File('file1.h5', 'r') as f:
-    # Check if you are trying to slice a dataset
-    obj = f['some_name']  # Replace with your key
-    if isinstance(obj, h5py.Dataset):
-        # You can slice the dataset
-        data = obj[:]
-        print("Dataset contents:", data)
-    else:
-        print(f"Cannot slice, '{obj}' is of type {type(obj)}")
+    def print_hdf5_structure(group, indent=0):
+        for key in group.keys():
+            item = group[key]
+            print("  " * indent + f"{key}: {type(item)}")
+            if isinstance(item, h5py.Group):
+                print_hdf5_structure(item, indent + 1)
+
+    # Print structure from the root
+    print_hdf5_structure(f)
 ```
 
 ## How to Merge Multiple hdf5 Files
