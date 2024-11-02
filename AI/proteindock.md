@@ -69,7 +69,7 @@ In the first generation of the Dock, it focus on 2 rigid bodies. It treat 2 prot
 !!! note anchor-and-grow
     The “anchor-and-grow” conformational search algorithm. The algorithm performs the following steps: (1) DOCK perceives the molecule’s rotatable bonds, which it uses to identify an anchor segment and overlapping rigid layer segments. (2) Rigid docking is used to generate multiple poses of the anchor within the receptor. (3) The first layer atoms are added to each anchor pose, and multiple conformations of the layer 1 atoms are generated. An energy score within the context of the receptor is computed for each conformation. (4) The partially grown conformations are ranked by their score and are spatially clustered. The least energetically favorable and spatially diverse conformations are discarded. (5) The next rigid layer is added to each remaining conformation, generating a new set of conformations. (6) Once all layers have been added, the set of completely grown conformations and orientations is returned
 
-### Compare to Other Related Tools
+#### Compare to Other Related Tools
 
 <div class="c-article-table-container"><div class="c-article-table-border c-table-scroll-wrapper"><div class="c-table-scroll-wrapper__content c-table-scroll-wrapper__fade--transparent" data-component-scroll-wrapper=""><table class="data last-table"><thead class="c-article-table-head"><tr><th class="u-text-left "><p>Method</p></th><th class="u-text-left "><p>Ligand sampling method<sup>a</sup>
                                           </p></th><th class="u-text-left "><p>Receptor sampling method<sup>a</sup>
@@ -88,9 +88,27 @@ In the first generation of the Dock, it focus on 2 rigid bodies. It treat 2 prot
 
 ### 2003: ZDock
 
-ZDock family
-- 2003: **ZDOCK**: An initial-stage protein-docking algorithm
-- 2005: **M-ZDOCK**: a grid-based approach for Cn symmetric multimer docking
+Version iteration:
+- ZDOCK 2.3/2.3.2 Scoring Function: Chen R, Li L, Weng Z. (2003) ZDOCK[^ZDOCK_2]
+- ZDOCK 3.0/3.0.2 Scoring Function: Mintseris J, Pierce B, Wiehe K, Anderson R, Chen R, Weng Z. (2007)[^ZDOCK_3]
+- M-ZDOCK: Pierce B, Tong W, Weng Z. (2005) M-ZDOCK[^MZDOCK]
+- ZDOCK 3.0.2/2.3.2: Pierce BG, Hourai Y, Weng Z. (2011)[^ZDOCK_302]
+- Online Server: Pierce BG, Wiehe K, Hwang H, Kim BH, Vreven T, Weng Z. (2014) ZDOCK Server[^ZDOCKSERVER]
+
+[^ZDOCK_2]: [Chen, R., Li, L., & Weng, Z. (2003). ZDOCK: an initial‐stage protein‐docking algorithm. Proteins: Structure, Function, and Bioinformatics, 52(1), 80-87.](http://www.ncbi.nlm.nih.gov/pubmed/12784371)
+[^ZDOCK_3]: [Mintseris, J., Pierce, B., Wiehe, K., Anderson, R., Chen, R., & Weng, Z. (2007). Integrating statistical pair potentials into protein complex prediction. Proteins: Structure, Function, and Bioinformatics, 69(3), 511-520.](http://www.ncbi.nlm.nih.gov/pubmed/17623839)
+[^MZDOCK]: [Pierce, B., Tong, W., & Weng, Z. (2005). M-ZDOCK: a grid-based approach for C n symmetric multimer docking. Bioinformatics, 21(8), 1472-1478.](http://www.ncbi.nlm.nih.gov/pubmed/15613396)
+[^ZDOCK_302]: [Pierce, B. G., Hourai, Y., & Weng, Z. (2011). Accelerating protein docking in ZDOCK using an advanced 3D convolution library. PloS one, 6(9), e24657.](http://www.ncbi.nlm.nih.gov/pubmed/21949741)
+[^ZDOCKSERVER]: [Pierce, B. G., Wiehe, K., Hwang, H., Kim, B. H., Vreven, T., & Weng, Z. (2014). ZDOCK server: interactive docking prediction of protein–protein complexes and symmetric multimers. Bioinformatics, 30(12), 1771-1773.](http://www.ncbi.nlm.nih.gov/pubmed/24532726)
+
+
+
+
+
+
+
+
+
 
 ### 2004: ClusPro
 
