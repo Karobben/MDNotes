@@ -86,6 +86,8 @@ In the first generation of the Dock, it focus on 2 rigid bodies. It treat 2 prot
                                     <sup>d</sup>Additional accuracy can be added to the scoring function using implicit solvent models. The most commonly used options are distance dependent dielectric (DDD), a parameterized desolvation term (DS), generalized Born (GB) and linearized Poisson Boltzmann (PB)</li>
                     </ol></div></div>
 
+---
+
 ### 2003: ZDock
 
 Version iteration:
@@ -95,6 +97,37 @@ Version iteration:
 - ZDOCK 3.0.2/2.3.2: Pierce BG, Hourai Y, Weng Z. (2011)[^ZDOCK_302]
 - Online Server: Pierce BG, Wiehe K, Hwang H, Kim BH, Vreven T, Weng Z. (2014) ZDOCK Server[^ZDOCKSERVER]
 
+
+#### Abstract
+
+ZDock was developed for ubbound docking. It is based on pairwise shape complementarity (Docking) with desolvation and electrostatics (Scoring). In there test, it shows high success rate in the **antibody-antigen** docking test case. It is especially helpful in **"large concave binding pocket"**. 
+
+Before the ZDock, there are:
+- **FTDOck**: gird-based shape complementarity (GSC) and electrostatic using a Fast Fourier Transform (FFT)
+- **DOT**: FFT-based computes Poission-Bolzmann electrostatics.
+- **HEX**: evaluates overlapping surface skins and electrostatic complementarity with Fourier coorelation.
+- **GRAMM**: low-resolutoin docking with the similar scoring as FTDOck;
+- **PPD**: matches critial poitns by using geometric hashing.
+- **GIGGER**: maximal surface mapping and favorable amino acid contacts by bit-mapping.
+- **DARWIN**: molecular mechanics energy defined according to CHARMM.
+
+For **ZDock**:
+- Optimizes desolvation (**GSC**), ==key scoring function==.
+    - GSC = grid points surrounding the receptor corresponding to ligand atoms - clash penalty
+- **FFT* for electrostatics
+- Novel pairwise shape complementarity function (**PSC**) by distance cut-off of receptor-ligand atom minus clash penalty.
+    - Favorable: Number of pair within cutoff
+    - Penalty: The clash penalty for core-core, surface-core, and surface-surface (9^9^, 9^3^, 9) 
+- **DE**: desolvation, estimated by atomic contact energy (**ACE**), which is a free energy change of breaking two protein atom-water contacts and forming a protein atom-protein atom contact and water-water contact. The sum of **ACE** is **DE**
+
+Version for scoring functions:
+- **ZDOCK1.3**[^ZDOCK1.3]: GSC+DE+ELEC
+- **ZDOCK2.1**[^ZDOCK2.1]: PSC
+- **ZDOCK2.2**[^ZDOCK_2]: PSC+DE
+- **ZDOCK2.3**[^ZDOCK_2]: PSC+DE+ELEC
+
+[^ZDOCK1.3]: Chen R, Weng Z. Docking unbound proteins using shape complementarity, desolvation, and electrostatics. Proteins 2002; 47: 281–294.
+[^ZDOCK2.1]: Chen R, Weng Z. A novel shape complementarity scoring function for protein-protein docking. Proteins 2003; 51: 397–408.
 [^ZDOCK_2]: [Chen, R., Li, L., & Weng, Z. (2003). ZDOCK: an initial‐stage protein‐docking algorithm. Proteins: Structure, Function, and Bioinformatics, 52(1), 80-87.](http://www.ncbi.nlm.nih.gov/pubmed/12784371)
 [^ZDOCK_3]: [Mintseris, J., Pierce, B., Wiehe, K., Anderson, R., Chen, R., & Weng, Z. (2007). Integrating statistical pair potentials into protein complex prediction. Proteins: Structure, Function, and Bioinformatics, 69(3), 511-520.](http://www.ncbi.nlm.nih.gov/pubmed/17623839)
 [^MZDOCK]: [Pierce, B., Tong, W., & Weng, Z. (2005). M-ZDOCK: a grid-based approach for C n symmetric multimer docking. Bioinformatics, 21(8), 1472-1478.](http://www.ncbi.nlm.nih.gov/pubmed/15613396)

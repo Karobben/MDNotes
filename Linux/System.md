@@ -222,7 +222,7 @@ scp -P 8022 test.md root@192.168.3.6:~/
 Similar to SCP, this commands could help you to skip files already exist:
 
 ```bash
-rsync -avz --ignore-existing test2/*   wenkanl2@nicwulab-linux.life.illinois.edu:/home/wenkanl2/test/
+rsync -avz --ignore-existing test2/*   username@IP:path
 
 # synchronize all files in test2 into the remote directory test
 ````
