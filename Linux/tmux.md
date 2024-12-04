@@ -12,7 +12,7 @@ thumbnail: 'https://s1.ax1x.com/2020/06/26/NsmGxf.png'
 priority: 10000
 ---
 
-## tmux2
+## Genearl Commands for Tmux 
 
 ![NsmGxf.png](https://s1.ax1x.com/2020/06/26/NsmGxf.png)
 
@@ -35,7 +35,7 @@ Panes: Each window could split into small panes which is the key feature for tmu
 | :------------- | :------------- |
 | Split pane horizontal | `ctrl`-`b` + `"` |
 | Split pane Vertical| `ctrl`-`b` + `%` |
-| Resize the width of the Panes | `ctrl`-`b` + `ctrl`-`→` |
+| Resize the the Panes | `ctrl`-`b` + `ctrl`-`→` |
 | Show pane ID| `ctrl`-`b` + `q`|
 | Show the window and pane ID| `ctrl`-`b` + `w`|
 | move the Panes into right| `ctrl`-`b` + `{ `|
@@ -44,3 +44,10 @@ Panes: Each window could split into small panes which is the key feature for tmu
 Tips:
 1. Panes resize:
     After you executed `ctrl`-`b`, you can hold `ctrl` and press the up, down, left, or right as many as you can until it fits you the best.
+
+## Window Related
+
+| Moves| Keys|
+|:-----|:-----|
+| Create a new Window|`ctrl`-`b`+ 'c'|
+| Switch to the next window| `ctrl`-`b` + `n`|

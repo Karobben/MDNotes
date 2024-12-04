@@ -29,7 +29,6 @@ thumbnail: "https://cdn.10xgenomics.com/image/upload/v1654273213/software-suppor
 
 4. <font style="background-color: royalblue">C</font> (Constant): The constant region of the antibody or T-cell receptor is encoded by these segments. This region does not vary much between different antibodies and is responsible for the effector functions of the antibody, such as recruiting other parts of the immune system.
 
-
 ## Pipeline
 
 |![Cell Ranger's V(D)J Algorithm](https://cdn.10xgenomics.com/image/upload/v1654273213/software-support/vdj/algorithms/algorithm-workflow.png)|
@@ -75,11 +74,23 @@ Documentation: [10X Genomics](https://www.10xgenomics.com/cn/support/software/ce
 
 ```bash
 cellranger vdj --id=sample345 \
-         --reference=/opt/refdata-cellranger-vdj-GRCh38-alts-ensembl-7.1.0 \
-         --fastqs=/home/jdoe/runs/HAWT7ADXX/outs/fastq_path \
-         --sample=mysample \
-         --localcores=8 \
-         --localmem=64
+        --reference=/opt/refdata-cellranger-vdj-GRCh38-alts-ensembl-7.1.0 \
+        --fastqs=/home/jdoe/runs/HAWT7ADXX/outs/fastq_path \
+        --sample=mysample \
+        --localcores=8 \
+        --localmem=64 \
+        --chain IG
+```
+
+Or De-novo
+
+```bash
+cellranger vdj --id=test_VDJ --denovo  \
+    --inner-enrichment-primers data/Primer.txt \
+    --fastqs=fastq_path \
+    --sample=test_VDJ \
+    --localcores=60 \
+    --localmem=256 --chain IG
 ```
 
 
@@ -93,7 +104,6 @@ cellranger vdj:     This is the main command being run. `cellranger` is the soft
 --localcores=8:     This parameter tells Cell Ranger to use 8 CPU cores for the computation. This setting helps to optimize the use of available computational resources.
 --localmem=64:      This allocates 64 GB of memory (RAM) for the run. This parameter is crucial for ensuring the software has enough memory to process the data without crashing.
 </pre>
-
 
 ## When the Job is Done
 
@@ -138,7 +148,6 @@ Pipestance completed successfully!
 
 
 Once `cellranger vdj` has successfully completed, you can browse the resulting summary HTML file in any supported web browser, open the `.vloupe` file in Loupe V(D)J Browser, or refer to the Understanding Output section to explore the data by hand.
-
 
 ## Trouble Shoot
 

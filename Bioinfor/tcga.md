@@ -1,7 +1,7 @@
 ---
 toc: true
 url: tcga
-covercopy: <a href="https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga/studied-cancers">© NIH</a>
+covercopy: <a href="https://www.nature.com/articles/ng.2764">© The Cancer Genome Atlas Research Network</a>
 priority: 10000
 date: 2022-12-06 13:02:44
 title: TCGA Database with R
@@ -10,8 +10,8 @@ description: "TCGA Database usage. R packages, TCGA related API"
 excerpt: "TCGAbiolinks is an R package that provides an easy-to-use interface to access and analyze data from The Cancer Genome Atlas (TCGA) project. It allows users to download TCGA data, perform quality control, differential expression analysis, and data visualization. TCGAbiolinks has contributed to a better understanding of the molecular basis of cancer and identified new potential biomarkers and therapeutic targets. <a title='ChatGPT'>Who sad this?</a>"
 tags: [TCGA, Bioinformatics, api]
 category: [Biology, Bioinformatics, Database]
-cover: "https://www.cancer.gov/sites/g/files/xnrzdm211/files/styles/cgov_article/public/cgov_image/media_image/100/700/5/files/Cancers%20selected%20labeled%20-%20article.jpg"
-thumbnail: "https://www.cancer.gov/sites/g/files/xnrzdm211/files/styles/cgov_article/public/cgov_image/media_image/100/700/5/files/Cancers%20selected%20labeled%20-%20article.jpg"
+cover: "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fng.2764/MediaObjects/41588_2013_Article_BFng2764_Fig1_HTML.jpg"
+thumbnail: "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fng.2764/MediaObjects/41588_2013_Article_BFng2764_Fig1_HTML.jpg"
 ---
 
 ## TCGA Database
@@ -21,6 +21,8 @@ Reference:
 - [Bioconductor](https://support.bioconductor.org/p/133576/)
 
 ```r
+BiocManager::install('TCGAbiolinks')
+
 library(TCGAbiolinks)
 library(SummarizedExperiment)
 library(dplyr)
@@ -29,24 +31,26 @@ library(DT)
 projects <- TCGAbiolinks:::getGDCprojects()$project_id
 projects <- projects[grepl('^TCGA',projects,perl=T)]
 
+# query is not downloading data, is making the correct query format for download the data 
 query <- GDCquery(project = projects,
                   data.category = "Transcriptome Profiling",  
                   data.type = "Gene Expression Quantification",  
                   workflow.type = "STAR - Counts")
-# counts <- GDCprepare(query,save = TRUE, save.filename = "all_tumor_htseq_raw_counts.rda")
-data <- GDCprepare(query = query)
-
-# download and fetch the data from local
+                  
+# After get the correct query, you can start to download it in the local
 GDCdownload(query = query,
               method = "api",
               files.per.chunk = 60,
               directory = "mRNA")
 
+# counts <- GDCprepare(query,save = TRUE, save.filename = "all_tumor_htseq_raw_counts.rda")
+data <- GDCprepare(query = query)
+
 expdat <- GDCprepare(query = query,
                        directory = "mRNA")
 ```
 
-If you download successfully, you would see the red codes below.
+If the query is correct, you would see the red codes below and you could start to download the data now.
 
 <code>
 <pre style="background-color:white; color:red">
