@@ -348,6 +348,91 @@ Transformations can be a powerful tool for addressing various issues with model 
 
 Common Transformations: **Log**, **Square Root**, **Inverse**, and **Box-Cox**
 
+### How Box-Cox Transformation Helps
+
+|![](https://imgur.com/I2d6z9f.png)|![](https://imgur.com/pE1XgUq.png)|
+|:-:|:-:|
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import boxcox
+from scipy.stats import linregress
+
+# Simulate data that is highly skewed and has non-linear relationship
+np.random.seed(42)
+x = np.linspace(1, 100, 100)
+y = (x ** 2) + np.random.normal(0, 50, size=x.shape)  # Quadratic trend with noise
+
+# Plot original data
+plt.scatter(x, y, alpha=0.7, label="Original Data")
+plt.title("Highly Skewed Data with Non-linear Relationship")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.show()
+
+# Apply Linear Regression without transformation
+slope_raw, intercept_raw, r_value_raw, p_value_raw, std_err_raw = linregress(x, y)
+
+# Plot regression line
+plt.scatter(x, y, alpha=0.7, label="Original Data")
+plt.plot(x, slope_raw * x + intercept_raw, color='red', label="Regression Line")
+plt.title("Linear Regression on Raw Data")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.show()
+
+# Shift y for Box-Cox (ensure positive values)
+y_shifted = y - min(y) + 1
+
+# Apply Box-Cox Transformation
+y_transformed, lambda_best = boxcox(y_shifted)
+
+# Plot transformed data
+plt.scatter(x, y_transformed, alpha=0.7, label="Transformed Data")
+plt.title(f"Box-Cox Transformed Data (λ = {lambda_best:.2f})")
+plt.xlabel("x")
+plt.ylabel("Transformed y")
+plt.legend()
+plt.show()
+
+# Apply Linear Regression on Transformed Data
+slope_trans, intercept_trans, r_value_trans, p_value_trans, std_err_trans = linregress(x, y_transformed)
+
+# Plot regression line on transformed data
+plt.scatter(x, y_transformed, alpha=0.7, label="Transformed Data")
+plt.plot(x, slope_trans * x + intercept_trans, color='red', label="Regression Line")
+plt.title("Linear Regression After Box-Cox Transformation")
+plt.xlabel("x")
+plt.ylabel("y (Transformed)")
+plt.legend()
+plt.show()
+
+# Print comparison of regression results
+{
+    "Raw Data R^2": r_value_raw ** 2,
+    "Transformed Data R^2": r_value_trans ** 2,
+    "Box-Cox Lambda": lambda_best,
+}
+```
+
+The simulated data demonstrates how the Box-Cox transformation can significantly improve the linear regression results for non-linear and skewed data:
+
+1. **Raw Data Results**:
+   - $R^2$ (Coefficient of Determination): 0.94
+   - The quadratic trend with noise leads to poor linear regression fit.
+
+2. **Transformed Data Results**:
+   - $R^2$: 0.99
+   - The Box-Cox transformation stabilizes variance and linearizes the relationship, improving the regression fit.
+
+3. **Optimal Lambda**:
+   - The optimal Box-Cox parameter $\lambda = 0.35$ ensures the best transformation.
+
+This shows how the Box-Cox transformation is beneficial for datasets where relationships are ==non-linear== or the dependent variable is ==highly skewed==.
+
 
 - **Box-Cox Transformation:**
   The Box-Cox transformation $ y_i^{(bc)} $ is defined as:
@@ -369,7 +454,6 @@ Common Transformations: **Log**, **Square Root**, **Inverse**, and **Box-Cox**
   \end{cases}
   $$
   - This transformation allows the original data values to be reconstructed from the transformed values, which is useful for interpretation and comparison with the original data scale after performing analyses or modeling on transformed data.
-
 
 !!! note Choosing $ \lambda $**
     The value of $ \lambda $ can significantly affect the skewness and homoscedasticity of the residuals in regression modeling. It is usually selected to maximize the log-likelihood function of obtaining the transformed data under a normal distribution assumption or through cross-validation procedures.
@@ -416,10 +500,6 @@ In regularization, $ \lambda $ (often called the regularization parameter) contr
 - In **Box-Cox transformations**, $ \lambda $ is selected to normalize the distribution of a variable or make relationships more linear.
 - In **regularization**, $ \lambda $ adjusts the trade-off between fitting the training data well (low bias) and keeping the model parameters small (low variance).
 
-
-
-
-
 ## Performance
 
 ### Residuals and Standardized Residuals
@@ -452,13 +532,32 @@ $$
 3. **Square Root Denominator**: The denominator of the standard deviation estimate involves the sum of squared residuals, which measures the overall error of the model, divided by the number of observations, adjusted for the leverage of each observation. This adjustment accounts for the fact that observations with higher leverage have a greater impact on the fit of the model and therefore should have less influence on the standardized residual.
 
 
-### R2
+### Coefficient of Determination (R^2)
 
-$$
-R^2 = \frac{\text{var}(\hat{y})}{\text{var}(y)}
-$$
 
-- $ \text{var}(y) = \frac{1}{N} \sum_{i=1}^N (y_i - \bar{y})^2 $
+The coefficient of determination, $ R^2 $, measures how well a regression model explains the variance in the dependent variable. It is commonly used to evaluate the goodness-of-fit of a model.
+
+#### Formula for $ R^2 $
+$$ R^2 = 1- \frac{\text{var}(\hat{y})}{\text{var}(y)}= 1 - \frac{\text{SS}_ {\text{res}}}{\text{SS}_ {\text{tot}}} $$
+
+Where:
+- $ \text{SS}_ {\text{res}} $: Residual sum of squares
+$$ \text{SS}_ {\text{res}} = \sum_{i=1}^n \left( y_i - \hat{y}_ i \right)^2 $$
+- $ \text{SS}_ {\text{tot}} $: Total sum of squares
+$$ \text{SS}_ {\text{tot}} = \sum_{i=1}^n \left( y_i - \bar{y} \right)^2 $$
+
+Here:
+- $ y_i $: Observed value of the dependent variable
+- $ \hat{y}_ i $: Predicted value from the model
+- $ \bar{y} $: Mean of the observed values
+- $ n $: Number of observations
+
+#### Interpretation of $ R^2 $
+- $ R^2 = 1 $: Perfect fit (the model explains all the variance in the data).
+- $ R^2 = 0 $: The model does not explain any of the variance (as bad as predicting the mean).
+- $ R^2 < 0 $: The model performs worse than predicting the mean.
+
+
 
 
 ### Cook’s distance
