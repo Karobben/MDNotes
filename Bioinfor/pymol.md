@@ -265,3 +265,12 @@ cmd.translate([10.0, 0.0, 0.0], '8a95 and chain A')
 cmd.rotate('z', 45, chain_to_move)
 ```
 
+## Change the Chain Name
+
+```python
+cmd.alter("Native and chain A", "chain='B'")
+```
+
+```pymol
+alter Native and chain A, chain='B' 
+```

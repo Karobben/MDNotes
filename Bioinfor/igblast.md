@@ -83,6 +83,36 @@ igblastn -query result/test.fasta \
 -organism <String> The organism for your query sequence. Supported organisms include human, mouse, rat, rabbit and rhesus_monkey for Ig and human and mouse for TCR. Custom organism is also supported but you need to supply your own germline annotations (see IgBLAST web site for details) Default = `human'
 </pre>
 
+## Build Your Reference
+
+1. Download the Reference
+    Go to the database like [IMGT](https://www.imgt.org/vquest/refseqh.html) and select the organism. Download all IGHV, IGHD, IGHJ, etc.
+2. Change the name of the sequence. For example, when you read the download file, the name of the sequence would be like: `>KT723008|IGHD1-1*01|Bos taurus_Holstein|F|D-REGION|284884..284914|31 nt|1| | | | |31+0=31| | |`. We only keep the most important informaion: `>IGHD2-1*01`. (A quick way is to using the script below)
+3. After that, build the index by `blast`: `makeblastdb -parse_seqids -dbtype nucl -in IGV`
+4. Build the `aux` file and run igblast 
+
+
+```python
+from Bio import SeqIO
+import os
+
+for key in "VDJ":
+    print(key)
+    Files = [i for i in os.listdir() if i[-7:] == key + '.fasta']
+    Final_seq = [] 
+    for file in Files:
+        for seq_record in SeqIO.parse(file, "fasta"):
+            id_tmp = seq_record.id.split('|')[1]
+            seq_tmp = str(seq_record.seq).replace('.', '')
+            Final_seq += [f">{id_tmp}\n{seq_tmp}"]
+
+    with open(f'IG{key}', 'w') as F:
+        F.write("\n".join(Final_seq))
+```
+
+
+
+
 ## pyir
 
 If you installed pyir, we could use the [pyir](https://github.com/crowelab/PyIR) to do the igblast with less parameters.

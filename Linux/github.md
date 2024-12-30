@@ -68,7 +68,7 @@ $ cat .gitignore
 
 [© Daniel Andrei Mincă; 2015](https://stackoverflow.com/questions/33360043/git-error-need-to-remove-large-file)
 ```bash
-$ git rm --cached giant_file
+git rm --cached giant_file
 # Stage our giant file for removal, but leave it on disk
 
 git commit --amend -CHEAD

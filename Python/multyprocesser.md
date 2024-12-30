@@ -118,7 +118,7 @@ In this code, it cost 8.9s
 
 Source: [pip install parallelbar](https://pypi.org/project/parallelbar/)
 ```python
-from parallelbar import progress_imap, progress_map, progress_imapu
+from parallelbar import progress_map
 
 if __name__=='__main__':
 	res = progress_map(foo, range(20), process_timeout=1.5, n_cpu=8)

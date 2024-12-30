@@ -8,10 +8,10 @@ title: "OpenMM, Molecular Dynamic Simulation"
 ytitle: "OpenMM, Molecular Dynamic Simulation"
 description: "OpenMM, Molecular Dynamic Simulation"
 excerpt: "123"
-tags: []
-category: []
-cover: ""
-thumbnail: ""
+tags: [openMM, Molecular Dynamic Simulation]
+category: [Python, Bio]
+cover: "https://imgur.com/kyKbB8I.png"
+thumbnail: "https://imgur.com/kyKbB8I.png"
 ---
 
 ## Install

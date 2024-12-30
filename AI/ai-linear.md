@@ -531,7 +531,6 @@ $$
 
 3. **Square Root Denominator**: The denominator of the standard deviation estimate involves the sum of squared residuals, which measures the overall error of the model, divided by the number of observations, adjusted for the leverage of each observation. This adjustment accounts for the fact that observations with higher leverage have a greater impact on the fit of the model and therefore should have less influence on the standardized residual.
 
-
 ### Coefficient of Determination (R^2)
 
 
@@ -557,8 +556,147 @@ Here:
 - $ R^2 = 0 $: The model does not explain any of the variance (as bad as predicting the mean).
 - $ R^2 < 0 $: The model performs worse than predicting the mean.
 
+## Outliers
+
+For increasing the performance of regression results, outliers detection and deletion is very important.
+
+### Hat Matrix (Leverage)
+
+The **hat matrix**, denoted as $ H $, is a matrix used in regression analysis that maps the observed response values to the predicted response values. It is derived from the least squares solution of a linear regression model.
+
+#### 1. **Estimated Coefficients ($ \hat{\beta} $)**
+- The coefficients ($ \hat{\beta} $) in a multiple linear regression are estimated using the following formula:
+  $$
+  \hat{\beta} = (X^T X)^{-1} (X^T y)
+  $$
+  - $ X $: Design matrix containing the predictors (including a column of ones for the intercept).
+  - $ y $: Response vector (actual observations).
+  - $ X^T X $: Matrix capturing the relationships between predictors.
+  - $ (X^T X)^{-1} $: Inverse of $ X^T X $, ensuring the system of equations is solvable.
+
+#### 2. **Predictions ($ y^{(p)} $)**
+- Predicted values ($ y^{(p)} $) are computed by applying the estimated coefficients ($ \hat{\beta} $) to the predictors:
+  $$
+  y^{(p)} = X \hat{\beta}
+  $$
+  - Substituting $ \hat{\beta} $ into this equation:
+    $$
+    y^{(p)} = X (X^T X)^{-1} (X^T y)
+    $$
+  - Rearranging gives:
+    $$
+    y^{(p)} = (X (X^T X)^{-1} X^T) y
+    $$
+
+#### 3. The hat matrix $ H $ is given by:
+
+$$
+H = X (X^T X)^{-1} X^T
+$$
+Where:
+- $ X $: The design matrix (contains the predictors with an added intercept column)
+- $ X^T $: The transpose of $ X $
+- $ (X^T X)^{-1} $: The inverse of $ X^T X $
+
+#### Properties of the Hat Matrix
+1. It is symmetric ($ H = H^T $).
+2. It is idempotent ($ H^2 = H $).
+3. The diagonal elements of $ H $, $ h_{ii} $, represent the leverage of each observation.
+
+#### Identifying Outliers Using the Hat Matrix
+
+##### Leverage ($ h_{ii} $)
+- The diagonal elements $ h_{ii} $ of the hat matrix measure the leverage of each observation.
+- Leverage quantifies how much an observation influences its fitted value. **Higher leverage indicates that the observation has more influence** on the regression line.
+
+##### Outliers and High Leverage Points
+1. **High Leverage**: Observations with large $ h_{ii} $ are far from the mean of the predictors and could disproportionately affect the regression model.
+   - Threshold: $ h_{ii} > \frac{2p}{n} $, where $ p $ is the number of predictors (including the intercept) and $ n $ is the number of observations.
+2. **Outlier**: An observation with ==both high leverage and a large residual== (difference between observed and predicted values) is likely to be an outlier.
 
 
+##### Practical Steps to Detect Outliers
+1. **Compute the Hat Matrix**:
+   - $ H = X (X^T X)^{-1} X^T $
+2. **Extract Leverage**:
+   - $ h_{ii} = \text{diag}(H) $
+3. **Combine with Residuals**:
+   - Use Cook's Distance or Studentized Residuals to identify observations that are both high-leverage and high-residual.
+4. **Thresholds**:
+   - High leverage: $ h_{ii} > \frac{2p}{n} $
+   - Cook's Distance: $ D_i > 4/n $
+
+
+#### Python Example
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Simulated data
+np.random.seed(42)
+X = np.random.rand(100, 1)
+y = 2 * X.flatten() + np.random.normal(0, 0.1, size=100)
+
+# Add an outlier
+X = np.vstack([X, [3]])  # Outlier in predictor
+y = np.append(y, [10])   # Outlier in response
+
+# Add intercept column
+X_design = np.hstack([np.ones((X.shape[0], 1)), X])
+
+# Compute hat matrix
+H = X_design @ np.linalg.inv(X_design.T @ X_design) @ X_design.T
+leverage = np.diag(H)
+
+# Identify high leverage points
+threshold = 2 * X_design.shape[1] / X.shape[0]  # 2p/n
+outliers = np.where(leverage > threshold)[0]
+
+print(f"Leverage Threshold: {threshold}")
+print(f"Outlier Indices: {outliers}")
+```
+
+![](https://imgur.com/UzrOJUz.png)
+
+#### Benefits of Using the Hat Matrix for Outlier Detection
+1. **Objective Identification**:
+   - Provides a mathematically robust way to detect influential points.
+2. **Diagnostic Tool**:
+   - Helps identify data points that disproportionately affect model predictions.
+
+
+#### Combined with Standard Residues
+
+
+High leverage alone my not enough to confirm it is an outlier. By combine the standard residue with leverage, we could make a better conclusion.
+
+1. **High Leverage + Large Residual**:
+   - A point with high $ h_{i,i} $ (leverage) and high $ |s_i| $ (standardized residual) is more likely to be an influential outlier.
+   
+2. **Identifying Outliers**:
+   - Use $ s_i $ to standardize residuals, allowing comparison regardless of varying leverage.
+
+3. **Model Diagnostics**:
+   - This methodology helps evaluate model robustness and identify points that might unduly influence the regression fit.
+
+##### **Residual Variance ($ \sigma_i^2 $)**
+- $ \sigma_i^2 = m(1 - h_{i,i}) = \frac{e^T e}{N}(1 - h_{i,i}) $:
+  - Residual variance depends on leverage $ h_{i,i} $ and the overall residual sum of squares.
+  - Points with high leverage ($ h_{i,i} $) reduce the denominator, increasing the influence of residuals.
+
+##### **Standardized Residual ($ s_i $)**
+- $ s_i = \frac{e_i}{\sigma} = \frac{e_i}{\sqrt{\frac{e^T e}{N}(1 - h_{i,i})}} $:
+  - $ e_i $: Residual for data point $ i $ ($ e_i = y_i - \hat{y}_i $).
+  - $ s_i $: Standardized residual accounts for leverage, enabling fair comparison of residuals across all data points.
+  - It identifies outliers with unusually large residuals relative to their variance.
+
+##### **Threshold for Outliers**
+- The slide provides thresholds for detecting outliers based on $ s_i $:
+  - $ |s_i| > 1 $: Unusual at the **68% level**.
+  - $ |s_i| > 2 $: Unusual at the **95% level**.
+  - $ |s_i| > 3 $: Unusual at the **99% level**.
+- Points with $ |s_i| $ exceeding these thresholds are flagged as potential outliers.
 
 ### Cook’s distance
 
@@ -571,8 +709,7 @@ Here:
   - $m = \frac{e^T e}{N}$ is the mean squared error.
   - $N$ is the number of observations in the dataset.
 
-
-
+Cook's distance is the mean squared of error difference between with and without the point.
 
 <style>
 pre {
@@ -580,3 +717,7 @@ pre {
   color: #5fd381;
 }
 </style>
+
+
+
+
