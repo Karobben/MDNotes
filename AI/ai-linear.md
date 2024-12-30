@@ -471,6 +471,124 @@ This shows how the Box-Cox transformation is beneficial for datasets where relat
     - for each λ~i~ record average error σ and over all Folds
 3. λ with smallest error - largest λ within one σ.
 
+### Polynomial
+
+**Polynomial transformation** is another common method used in regression and modeling when the relationship between the independent and dependent variables is non-linear. Here's how it works and how it compares to other methods like Box-Cox.
+
+#### Key Points from the Slide:
+
+1. **Linear Model of Explanatory Variables**:
+   - The slide starts with a simple linear regression model involving two explanatory variables $ x_1 $ and $ x_2 $:
+     $$
+     y_i = \beta_2 x_2^{(i)} + \beta_1 x_1^{(i)} + \beta_0 + \xi^{(i)}
+     $$
+     - $ \beta_0 $: Intercept
+     - $ \beta_1, \beta_2 $: Coefficients
+     - $ \xi^{(i)} $: Error term
+   - This is a standard multiple linear regression model.
+
+2. **Polynomial Regression**:
+   - For non-linear relationships, a **polynomial transformation** of the explanatory variable is applied. For example:
+     $$
+     y_i = \beta_2 (x^{(i)})^2 + \beta_1 (x^{(i)})^1 + \beta_0 + \xi^{(i)}
+     $$
+   - The design matrix $ X_i^T $ becomes:
+     $$
+     X_i^T = [(x^{(i)})^2, (x^{(i)})^1, 1]
+     $$
+
+3. **Regression Application**:
+   - After transforming the data, we can use standard regression methods to fit a model as before.
+
+4. **Challenge**:
+   - **Choosing the Polynomial Order**: It's difficult to determine the optimal polynomial degree ($ n $) for the model. A higher degree can lead to overfitting, while a lower degree might underfit.
+
+
+#### Polynomial Transform vs. Box-Cox Transform:
+
+| **Aspect**                  | **Polynomial Transform**                                         | **Box-Cox Transform**                                         |
+|-----------------------------|-------------------------------------------------------------------|---------------------------------------------------------------|
+| **Purpose**                 | Captures non-linear relationships by adding polynomial terms.   | Stabilizes variance and makes data more normally distributed. |
+| **Flexibility**             | Highly flexible with different polynomial degrees.              | Limited to monotonic transformations.                        |
+| **Ease of Use**             | Requires selecting an appropriate degree ($ n $).             | Only requires finding the optimal $ \lambda $ parameter.   |
+| **Risk**                    | Risk of overfitting with high-degree polynomials.               | Minimal risk of overfitting, but doesn't capture non-linearity.|
+| **Output**                  | Adds multiple polynomial terms (e.g., $ x^2, x^3, \dots $).   | Applies a monotonic transformation to the dependent variable. |
+
+
+![Compare the Box-Cox transformation and polynomial regression](https://imgur.com/uoegq2W.png)
+
+```python
+# Re-import necessary libraries after the environment reset
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
+from scipy.stats import boxcox
+
+# Simulate non-linear data
+np.random.seed(42)
+X = np.linspace(1, 10, 100).reshape(-1, 1)
+y = 2 * (X.flatten() ** 2) + 3 * X.flatten() + np.random.normal(0, 10, size=X.shape[0])  # Quadratic relationship
+
+# Add a Box-Cox requirement (positive y)
+y_shifted = y - np.min(y) + 1
+
+# Fit linear regression to raw data
+linear_model = LinearRegression()
+linear_model.fit(X, y)
+y_pred_linear = linear_model.predict(X)
+
+# Fit polynomial regression (degree 2)
+poly = PolynomialFeatures(degree=2)
+X_poly = poly.fit_transform(X)
+poly_model = LinearRegression()
+poly_model.fit(X_poly, y)
+y_pred_poly = poly_model.predict(X_poly)
+
+# Apply Box-Cox transformation
+y_boxcox, lambda_best = boxcox(y_shifted)
+
+# Fit linear regression to Box-Cox transformed data
+boxcox_model = LinearRegression()
+boxcox_model.fit(X, y_boxcox)
+y_pred_boxcox = boxcox_model.predict(X)
+
+# Plot results
+plt.figure(figsize=(15, 10))
+
+# Raw data and linear regression
+plt.subplot(2, 2, 1)
+plt.scatter(X, y, label="Data", alpha=0.7)
+plt.plot(X, y_pred_linear, color="red", label="Linear Fit")
+plt.title("Linear Regression on Raw Data")
+plt.xlabel("X")
+plt.ylabel("y")
+plt.legend()
+
+# Polynomial regression
+plt.subplot(2, 2, 2)
+plt.scatter(X, y, label="Data", alpha=0.7)
+plt.plot(X, y_pred_poly, color="green", label="Polynomial Fit (Degree 2)")
+plt.title("Polynomial Regression (Degree 2)")
+plt.xlabel("X")
+plt.ylabel("y")
+plt.legend()
+
+# Box-Cox transformed data
+plt.subplot(2, 2, 3)
+plt.scatter(X, y_boxcox, label="Box-Cox Transformed Data", alpha=0.7)
+plt.plot(X, y_pred_boxcox, color="purple", label="Linear Fit on Transformed Data")
+plt.title(f"Linear Regression on Box-Cox Transformed Data (λ={lambda_best:.2f})")
+plt.xlabel("X")
+plt.ylabel("Transformed y")
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+```
+
+
+
 ### Regularization 
 
 **Regularization** involves adding a penalty to the loss function that a model minimizes. This penalty typically discourages complex models by imposing a cost on having larger parameter values, thereby promoting simpler, more robust models.
