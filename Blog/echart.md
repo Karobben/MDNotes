@@ -182,8 +182,6 @@ This is how it looks like from the codes above:
 
 {% endecharts %}
 
-
-
 ## Line chart
 
 ```echart
@@ -237,7 +235,6 @@ option = {
     }]
 };
 {% endecharts %}
-
 
 ## Details for Echart
 
@@ -373,7 +370,6 @@ itemStyle:{
                }
            },
 ```
-
 
 ## Bugs
 
