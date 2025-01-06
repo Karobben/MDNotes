@@ -314,6 +314,60 @@ Principal Component Analysis (PCA) is a statistical technique used to reduce the
 
 
 
+### 1. **Original Dataset**:
+- The dataset $\{x\}$:
+  - It has $d$ features (dimensions).
+  - Each data point is a vector in a $d$-dimensional space.
+
+
+### 2. **Step 1: Covariance Matrix**:
+- The covariance matrix captures how features are correlated. It is computed as:
+  $$
+  \text{Covmat}(\{x\}) = \frac{1}{N} \sum_{i=1}^N \left( x_i - \text{mean}(\{x\}) \right) \left( x_i - \text{mean}(\{x\}) \right)^\top
+  $$
+- PCA works by **diagonalizing** this covariance matrix.
+
+### 3. **Step 2: Eigen Decomposition**:
+- Decompose the covariance matrix into **eigenvalues ($\lambda$)** and **eigenvectors ($u$)**:
+  $$
+  U^\top \text{Covmat}(\{x\}) U = \Lambda
+  $$
+  - $U$: Matrix of eigenvectors (principal components).
+  - $\Lambda$: Diagonal matrix of eigenvalues (variance explained by each principal component).
+
+### 4. **Step 3: Choose $s$ Principal Components**:
+- Eigenvalues represent the **variance** explained by each principal component. They are sorted in descending order.
+- To reduce dimensions:
+  - Choose the top $s$ eigenvalues that explain the most variance.
+  - Often, the ratio is calculated:
+    $$
+    \frac{\sum_{j=s+1}^d \lambda_j}{\sum_{j=1}^d \lambda_j}
+    $$
+    - This ratio helps decide $s$ by ensuring the **remaining variance (error)** is small.
+  - Plotting $\lambda_i$ vs. $i$ (as shown in the slide) can help visualize where most variance is captured (the "elbow" point).
+
+### 5. **Step 4: Project Data to Lower Dimensions**:
+- Once you have selected $s$ principal components, project the original data onto this lower-dimensional space:
+  $$
+  \hat{x}_ i = \sum_ {j=1}^s \left[ u_ j^\top (x_ i - \text{mean}(\{x\})) \right] u_j + \text{mean}(\{x\})
+  $$
+  - Here:
+    - $u_j$: The eigenvectors corresponding to the top $s$ eigenvalues.
+    - $\hat{x}_i$: The low-dimensional representation of $x_i$.
+
+### 6. **Visualization from the Slide**:
+- The graph shows the eigenvalues ($\lambda_i$) vs. their indices ($i$):
+  - The blue curve represents the sorted eigenvalues.
+  - The orange circle highlights the "elbow" point, which suggests the optimal number of principal components to retain.
+
+### Summary of PCA Calculation:
+1. Center the data (subtract the mean).
+2. Compute the covariance matrix.
+3. Find eigenvalues and eigenvectors of the covariance matrix.
+4. Choose the top $s$ eigenvalues to decide the number of principal components.
+5. Project the data onto the top $s$ eigenvectors to get a reduced representation.
+
+
 <style>
 pre {
   background-color:#38393d;
