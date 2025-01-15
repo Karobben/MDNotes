@@ -197,7 +197,6 @@ set ffs=unix,dos,mac             " Use Unix as the standard file type.
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 </pre>
 
-
 ## Basic Usage of Nvim-R
 
 <pre>
@@ -250,7 +249,6 @@ E117: Unknown function: nvim_set_option_value
 Press ENTER or type command to continue
 </pre>
 
-
 ## Configure for LuanrVim
 
 ```bash
@@ -285,15 +283,15 @@ i                   enter editing mode
 dd                  cut the selected line into paste board
 p                   paste the coppied contents
 v                   selecte mode to selecte multiple words and lines
-    wd              delete the selected words/lines
-    y               copy the selected words/lines
-    p               repalce the selected workds/lines with coppied contents
+wd                  delete the selected words/lines
+y                   copy the selected words/lines
+p                   repalce the selected workds/lines with coppied contents
 o                   Start a new line
 :>                  Intend the selected line 
 :>>                 Intend tiwce
 :<                  Undo the intend
 : m 10              Move the selected words/line into line 10
-Alt+ j/k        Move selected words/lines up/donw
+Alt+ j/k            Move selected words/lines up/donw
 ```
 
 
@@ -308,8 +306,10 @@ l                   moving right
 w                   moving to the head of the next word
 e                   moving to the end of the word
 b                   moving to the head of the previous word
+0                   Move to the beginning of the line.
+^                   Move to the first non-whitespace.
+$                   Move to the end of the line.
 ge                  moving back to the end of the word
-
 gg                  moving to the top of the file
 G                   moving to the end of the file
 Ctrl + f            page foward (donw)
