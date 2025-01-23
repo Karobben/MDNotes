@@ -55,7 +55,6 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-
 ## Virtual Environment
 ```
 ## Create an environment
@@ -73,6 +72,15 @@ conda activate Biostation
 source deactivate
 ## Or
 conda deactivate
+```
+
+## Compact your Environment
+
+```bash
+# reproducibility
+conda env export --no-builds > environment.yml
+# Then on new machine
+conda env create -f environment.yml
 ```
 
 ## Install into Non-default Location

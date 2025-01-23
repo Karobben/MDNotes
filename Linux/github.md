@@ -258,3 +258,9 @@ This sequence of commands will completely remove the submodule from your reposit
 ## Branches
 
 - Delete branch: `git push origin --delete <remote-branch-name>`
+
+- Upload local repository into a new branch. ([source](https://stackoverflow.com/questions/2765421/how-do-i-push-a-new-local-branch-to-a-remote-git-repository-and-track-it-too))
+    ```bash
+    git checkout -b <branch>
+    git push -u origin <branch>
+    ```
