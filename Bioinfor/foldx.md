@@ -142,10 +142,11 @@ End time of FoldX: Sat Jul  6 17:23:18 2024
 Total time spend: 0.85 seconds.
 </pre>
 
-## Mutation Energy Change Calculation
+## Mutation Energy Change Calculation (BuildModel)
 
-With FoldX, you can predicted the mutations effects when you have the wild type structure. The command `BuildModel` could generate the new pdb structure with the 'mutate_file' you write. Here is an example of `mutate_file`:
+With FoldX, you can predicted the mutations effects when you have the wild type structure. And you could also swap the residues by this way. The command `BuildModel` could generate the new pdb structure with the 'mutant_file' you write. According to the [document](https://foldxsuite.crg.eu/command/BuildModel), you can using 2 types of [configure format](https://foldxsuite.crg.eu/parameter/mutant-file) and they should start as `mutant_file` or `individual_list`. In the example `individual_list` below, make sure ==each mutation sets are ended with `;` and separate by `,`. No spaces are allowed==.
 
+Here is an example of mutant configure file:
 <pre>
 AA4P,FD4P;
 AA4F,QD4F;
@@ -342,7 +343,6 @@ From the experience above, I think it works under the assumption that the struct
 ![](https://imgur.com/JpXnrlY.png)
 
 [^Yuan_M_23]: Yuan M, Feng Z, Lv H, et al. Widespread impact of immunoglobulin V-gene allelic polymorphisms on antibody reactivity[J]. Cell Reports, 2023, 42(10).
-
 
 ## Interface Analysis
 
