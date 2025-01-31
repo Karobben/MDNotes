@@ -15,17 +15,16 @@ priority: 10000
 ## To Start With Linux
 
 <a name="f2cMB"></a>
-## 1 Add a user
+## Use related
+
+### Add a user
 
 ```bash
 useradd ken # add a user 'ken'
 passwd ken  # add a password for urser 'ken'
 ```
 
-
-<a name="iIARD"></a>
-## 2 Add users to sudo group
-
+### Add users to sudo group
 ```bash
 vim /etc/sudoers # use root acount or run with sudo
 ```
@@ -36,8 +35,14 @@ ken  ALL=(ALL)    ALL
 ```
 save and quite
 
+### Give the read permission to other users
 
-<a name="6nxWN"></a>
+```bash
+setfacl -R -m u:{user name}:rwx {Directory name}
+```
+Change the `{Directory name}` and `{user name}` before run it. I tread to not given `w` and failed. I don't know why.
+
+
 ## 3 Adding Script to boot list
 
 ```bash
@@ -57,7 +62,6 @@ exit 0
 ```bash
 sudo chmod +x /etc/rc.local
 ```
-
 ## Something Else
 
 ### System infor
@@ -83,8 +87,6 @@ free -h
 ```
 ### Java
 [adopt open jdk](https://adoptopenjdk.net/)
-
-
 ## Control your sound
 
 ```bash
@@ -100,8 +102,6 @@ Source: [Eric Carvalho 2011](https://askubuntu.com/questions/26068/how-do-you-mu
 amixer set Master mute   
 amixer set Master unmute
 ```
-
-
 ## Paste
 
 [ДМИТРИЙ МАЛИКОВ, 2013](https://stackoverflow.com/questions/18437124/how-to-combine-two-variable-column-by-column-in-bash)
