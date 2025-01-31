@@ -133,6 +133,31 @@ Enter your github repository page and select the ssh link to configure the local
 git remote set-url origin git@github.com:username/repo.git
 ```
 
+## Merge Conflict
+
+When you have a merge conflict, you need to resolve it manually. Here's how you can resolve a merge conflict in a file.
+
+1. Open the file in a text editor and look for the conflict markers. Conflict markers are added by Git to indicate the conflicting changes from different branches. They look like this:
+
+<pre>
+<<<<<<< HEAD
+This is the content from the current branch
+=======
+This is the content from the branch you're merging in
+>>>>>>> branch-name
+</pre>
+
+```bash
+# Open the file in a text editor and resolve the conflict markers
+lvim lazy-lock.json
+# After resolving the conflicts, stage the file
+git add lazy-lock.json
+# Commit the merge
+git commit -m "Resolved merge conflict in lazy-lock.json"
+# If you were rebasing, continue the rebase
+git rebase --continue
+```
+
 ## Re-base the Local by Deleting all Local Change
 
 ```bahs
