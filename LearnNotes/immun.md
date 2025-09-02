@@ -36,13 +36,37 @@ The basic structure of an antibody is composed of two identical heavy chains and
 
 The tips of the "Y" arms contain a special region known as the CDR. This region is responsible for recognizing and binding to specific parts of foreign invaders, called antigens. Each antibody has six CDRs (three from the light chain and three from the heavy chain), which collectively determine its specificity. It's like the "lock and key" model; the CDR is the lock, and the antigen is the key.
 
+## Different types of antibodies
+
+
+Source: [Ninja Nerds: Antibody Structure & Function; 2017; YouTuBe](https://www.youtube.com/watch?v=zg61a3BoR8Y)
+
+| Feature            | **IgG**                              | **IgA**                               | **IgM**                              | **IgE**                               | **IgD**                              |
+|--------------------|--------------------------------------|----------------------------------------|--------------------------------------|----------------------------------------|--------------------------------------|
+| **Main function**   | Long-term immunity, opsonization     | Mucosal immunity (gut, lung, etc.)     | Early immune response (first made)   | Allergy and parasite defense           | Role unclear, involved in B cell signaling |
+| **Location**        | Blood, extracellular fluid, placenta | Mucosal surfaces, secretions (saliva, milk, tears) | Blood and lymph                      | Tissues near mast cells and basophils | Mostly on immature B cell surfaces  |
+| **Structure**       | Monomer                             | Dimer (in secretions)                  | Pentamer                            | Monomer                               | Monomer                              |
+| **Serum abundance** | ~75–80% (most abundant)              | ~10–15%                                 | ~5–10%                               | Very low                               | Very low                             |
+| **Crosses placenta**| ✅ Yes                               | ❌ No                                   | ❌ No                                | ❌ No                                  | ❌ No                                |
+| **Fixes complement**| ✅ Yes (classical pathway)           | ❌ (not directly)                       | ✅ Yes (best at it)                  | ❌ No                                  | ❌ No                                |
+
+## Maturation of the B Cell
+
+|![](https://imgur.com/3l8R7Wd.png)<br>© [Handwritten Tutorials](https://www.youtube.com/watch?v=ZqWCpzRubJY)|
+|:-:|
+|![](https://imgur.com/HaoILIe.png)|
+
+|||
+|:-:|:-|
+|![](https://imgur.com/qPSrCOn.png)<br>© [Armando Hasudungan](https://www.youtube.com/watch?v=Bl6vWLqL2D0)| B cell maturation: After transfered into lymphoid organ, the B cell would be activated by the antigen. With the help of the T cell, the B cell would accumulate the mutation in the CDR region and finally produce the antibody.|
+
 ## **The Magic of Phage Display**
 
 Phage display is a high-throughput technology used to study protein-protein, protein-peptide, and protein-DNA interactions. It's like a library, but instead of books, we have bacteriophages - viruses that infect bacteria.
 
 ### **Basics of Phage Display**
 
-|![Different types of phage](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3656071/bin/hvi-8-1817-g1.jpg)|
+|![Different types of phage](https://www.tandfonline.com/cms/asset/8123ba1c-b3a5-4f4b-b3f2-bebc4b4ee7dd/khvi_a_10921703_f0001.jpg)|
 |:-:|
 |[© Justyna Bazan](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3656071/)|
 
@@ -57,16 +81,16 @@ Antibody fragments' expression in E. coli necessitates in vivo refolding to main
 Various antibody fragments, including Fab, Fv, scFv, and their modifications, are employed in phage display technology. These fragments, particularly scFv, have been expressed on the phage surface without compromising antibody affinity. The CRAbs construct, comprising two scFv fragments targeting adjacent epitopes, is one notable example.
 
 
-|![Schematic presentation of antibody fragments](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3656071/bin/hvi-8-1817-g2.jpg)|
+|![Schematic presentation of antibody fragments](https://www.tandfonline.com/cms/asset/ea715e13-4e43-4696-b762-2032148be8da/khvi_a_10921703_f0002.jpg)|
 |:-:|
 |[© Justyna Bazan](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3656071/); Fab (the antigen-binding fragment), scFab (the single chain antigen-binding fragment), scFabΔC (the scFab variant without cysteins), scFv (the single chain fragment variable), Fv (the fragment variable), VHdAb (the antibody with one variable heavy chain domain), CRAb (the construct specific to adjacent epitopes on the antigen)|
 
 | Antibody Fragment | Description                                                                                      |
 |-------------------|--------------------------------------------------------------------------------------------------|
-| **Fab**           | VH-CH and VL-CL segments linked by disulfide bonds. Used in tumor imaging.                       |
-| **Fv**            | Comprises only the VL and VH regions.                                                            |
-| **scFv**          | A commonly used antibody fragment consisting of VL and VH regions stabilized by (Gly4Ser)3 linker.|
-| **VHH**           | Unique fragment found in Camelidae serum antibodies, targeting unique conformational epitopes.    |
+| **Fab**           | the **antigen-binding fragment**; VH-CH and VL-CL segments linked by disulfide bonds. Used in tumor imaging.              |
+| **Fv**            | the **fragment variable**; Comprises only the VL and VH regions.                                                          |
+| **scFv**          | the **single chain fragment variable**; A commonly used antibody fragment consisting of VL and VH regions stabilized by (Gly4Ser)3 linker.|
+| **VHH**           | Unique fragment found in Camelidae serum antibodies, targeting unique conformational epitopes.   |
 | **CRAbs**         | Construct with two scFv fragments specific to adjacent epitopes of the same antigen.             |
 | **Diabodies**     | Formed by dimerization of molecules and connection of antibody fragments.                        |
 

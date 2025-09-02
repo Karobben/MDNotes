@@ -139,13 +139,13 @@ When you have a merge conflict, you need to resolve it manually. Here's how you 
 
 1. Open the file in a text editor and look for the conflict markers. Conflict markers are added by Git to indicate the conflicting changes from different branches. They look like this:
 
-<pre>
+```
 <<<<<<< HEAD
 This is the content from the current branch
 =======
 This is the content from the branch you're merging in
 >>>>>>> branch-name
-</pre>
+```
 
 ```bash
 # Open the file in a text editor and resolve the conflict markers
@@ -156,6 +156,49 @@ git add lazy-lock.json
 git commit -m "Resolved merge conflict in lazy-lock.json"
 # If you were rebasing, continue the rebase
 git rebase --continue
+```
+
+Error message:
+<pre>
+To github.com:Karobben/PigAntiBodies.git
+ ! [rejected]        esm -> esm (non-fast-forward)
+error: failed to push some refs to 'github.com:Karobben/PigAntiBodies.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+</pre>
+
+The error message indicates that the tip of your current branch is behind the remote branch, and you need to integrate the remote changes before pushing again. Here's how you can resolve this issue:
+
+Check the status of your repository to see which files are involved in the merge conflict:
+```bash
+git status
+```
+
+<pre>
+On branch esm
+Your branch and 'origin/esm' have diverged,
+and have 1 and 3 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+	new file:   Train.py
+	modified:   plot/loss.png
+	deleted:    result/emb_onehot_ep999.pth
+	modified:   script/Train.py
+	new file:   utils/Graphic/__pycache__/GNN.cpython-39.pyc
+</pre>
+
+The output shows that you have resolved the conflicts, and the changes are ready to be committed. You can conclude the merge by committing the changes:
+
+```bash
+git commit -m "Concluded merge by resolving conflicts"
+git pull
+git push
 ```
 
 ## Re-base the Local by Deleting all Local Change

@@ -12,9 +12,7 @@ thumbnail: 'https://tse3-mm.cn.bing.net/th/id/OIP.pg0lLEEeNeiUp31DPMKtRwHaCY'
 priority: 10000
 ---
 
-## Bioconda
-
-## 1. Install
+## Install
 Location: [link for Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 ```bash
 # this script might not work now
@@ -47,7 +45,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 </pre>
 
-## 2. Setup Channels
+## Setup Channels
 You may need to add the bin file in your environment
 ```bash
 conda config --add channels defaults
@@ -81,7 +79,12 @@ conda deactivate
 conda env export --no-builds > environment.yml
 # Then on new machine
 conda env create -f environment.yml
+# update the environment if you have it already
+conda env update --file environment.yml --prune
 ```
+
+!!! note
+    --prune removes packages that are not listed in the environment.yml but are currently installed in the environment.
 
 ## Install into Non-default Location
 
@@ -94,6 +97,21 @@ conda create --prefix /path/to/directory python=3.8 numpy
 
 # this is how you can activate this environment
 conda activate /path/to/directory
+```
+
+## Find the package in all channels
+
+Exp: fins which environment has pyrosetta
+```bash
+# 1) Get a list of all environment names
+# 2) For each environment, run "conda list" and grep for "pyrosetta"
+# 3) If found, print the environment name
+
+for env in $(conda env list | awk 'NR>2 {print $1}'); do
+    if conda list -n "$env" 2>/dev/null | grep -q pyrosetta; then
+        echo "PyRosetta is installed in environment: $env"
+    fi
+done
 ```
 
 ## Delete you Environment

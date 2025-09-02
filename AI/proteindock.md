@@ -170,7 +170,6 @@ On the other hand, I didn't find a way to mark the surface residues so we could 
 
 [Protein-Protein Docking Using Evolutionary Information](https://link.springer.com/protocol/10.1007/978-1-4939-7759-8_28)
 
-
 ## Machine Learning Based Docking
  
 ### 2021: DeepRank
@@ -201,8 +200,12 @@ DeepRank family:
 [^Deeprank_GNN_ESM]: Xu, X., & Bonvin, A. M. (2024). DeepRank-GNN-esm: a graph neural network for scoring protein–protein models using protein language model. Bioinformatics advances, 4(1), vbad191.
 [^Deeprank2]: [Crocioni, G., Bodor, D. L., Baakman, C., Parizi, F. M., Rademaker, D. T., Ramakrishnan, G., ... & Xue, L. C. (2024). DeepRank2: Mining 3D Protein Structures with Geometric Deep Learning. Journal of Open Source Software, 9(94), 5983.](https://joss.theoj.org/papers/10.21105/joss.05983.pdf)
 
+### DockQ
 
+- [DockQ: a quality measure for protein–protein docking models](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0161879)
+- [DockQ v2: improved automatic quality measure for protein multimers, nucleic acids, and small molecules](https://academic.oup.com/bioinformatics/article/40/10/btae586/7796530)
 
+DockQ is a knowledge based docking evaluation tool. It divided the docking results into 4 categories: Incorrect, Acceptable, Medium, or High quality. The score it uses is: F~nat~, LRMS, and iRMS as proposed and standardized by CAPRI. The training set are extremely in balanced. It has over 56,000 incorrect docking, 760 acceptable, 850 mdeium, and 74 high quality. w 
 
 ## Online Tools
 

@@ -64,9 +64,6 @@ waque init
 
 只需要去網頁上, 把該文檔刪除, 然後就可以上傳了.
 
-
-
-
 ## 已知問題
 
 大部分和簡書顯示類似: [择势勤 2019](https://www.jianshu.com/p/ebe52d2d468f)[^A]
@@ -272,8 +269,6 @@ You can create footnotes like this[^footnote].
 You can create footnotes like this[^footnote].
 
 [^footnote]: Here is the *text* of the **footnote**.
-
-
 
 ## 其他
 

@@ -134,6 +134,12 @@ set_color red2, [1,0.3,0.01]
 color red2, Mos99 
 ```
 
+Color for b-factor by spectrum:
+```pymol 
+spectrum b, white_blue_red, selection=all, minimum=0.8, maximum=1
+```
+
+
 ## Strcture align
 
 |![Protein Structure Align](https://pymolwiki.org/images/thumb/6/6e/After_alignment.png/400px-After_alignment.png)|

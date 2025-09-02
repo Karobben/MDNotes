@@ -411,6 +411,96 @@ def train(train_dataloader, epochs):
     return model
 ```
 
+## Limitations of Neural Networks
+
+### Failure in Sine Function
+
+
+Raw post: [Approximating Sine Functions with Neural Networks: A Deep Learning Tutorial; Giovanny Espitia; 2024; medium](https://medium.com/@giovannyespitiag117/approximating-sine-functions-with-neural-networks-a-deep-learning-tutorial-167d8492be84)
+
+![](https://imgur.com/ICYJXlS.png)
+
+
+> Here is an example of a neural network's performance on a sine function. The neural network is trained to approximate the sine function but fails to do so for values in the gaps between -10 to -20 and 10 to 20. You can see that the model learns the region between -10 and 10 very well, but it simply overfits or "remembers" the training data. This example is very straightforward because we have only one dimension. So, this is probably the reason it can perform well on high-dimensional data: the network can build good connections across different dimensions. However, it is still limited to the existing patterns in the training set. The larger the network, the more patterns it can learn, but the less it can generalize. 
+
+
+```python
+#dependencies 
+import numpy as np
+import matplotlib.pyplot as plt
+import torch 
+import torch.nn as nn
+import torch.optim as optim
+
+#generating and visualizing dataset
+x = np.linspace(-10 * np.pi, 10 * np.pi, 10000)
+X1 = x[x<=-20]
+X2 = x[(x>20)]
+X3 = x[(x>=-10) & (x<=10)]
+x = np.concatenate([X1, X3, X2])
+y = np.sin(x) 
+
+#transforming the input and output arrays to tensors
+x_tensor = torch.from_numpy(x).float().view(-1, 1)
+y_tensor = torch.from_numpy(y).float().view(-1, 1)
+
+#implementing the model
+class Net(nn.Module):
+  def __init__(self):
+    super(Net, self).__init__()
+    self.hidden = nn.Linear(1, 128)
+    self.hidden2 = nn.Linear(128, 256)
+    self.hidden3 = nn.Linear(256, 128)
+    self.output = nn.Linear(128, 1)
+  
+  def forward(self, x):
+    x = torch.relu(self.hidden(x))
+    x = torch.relu(self.hidden2(x))
+    x = torch.relu(self.hidden3(x))
+    x = self.output(x)
+    return x
+
+#instantiating the model, criterion (loss function), and optimizer
+model = Net()
+criterion = nn.MSELoss()
+optimizer = optim.Adam(model.parameters(), lr = 0.001)
+
+#training loop
+num_epochs = 10000
+for epoch in range(num_epochs):
+  #forward pass
+  outputs = model(x_tensor)
+  loss = criterion(outputs, y_tensor)
+  optimizer.zero_grad()
+  loss.backward()
+  optimizer.step()
+  if (epoch + 1) % 100 == 0:
+    print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}")
+
+#inference and visualization
+
+# Test the trained model
+x2 = np.linspace(-10 * np.pi, 10 * np.pi, 10000)
+x_tensor = torch.from_numpy(x2).float().view(-1, 1)
+with torch.no_grad():
+    predicted = model(x_tensor)
+
+# Plot the original function and the learned function
+plt.figure(figsize=(10, 5))
+plt.scatter(x, y, color='blue', label='Original Function', s = 4)
+plt.plot(x2, predicted.numpy(), color='red', label='Learned Function')
+plt.title("Original Function vs. Learned Function")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.grid(True)
+plt.savefig('sine.png')
+```
+### Complexity of the Model: Capacity vs. Generalization
+
+![](https://imgur.com/TWee4rq.png)
+
+As shown in the example above, when we reduce the number of hidden layers and nodes, the model is limited to only a portion of the data. The model's capacity is restricted, and it can only "learn" or "memorize" part of the training data.
 
 <style>
 pre {

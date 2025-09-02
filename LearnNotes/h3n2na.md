@@ -1,17 +1,17 @@
 ---
 toc: true
 url: h3n2na
-covercopy: <a href='https://www.cdc.gov/flu/about/viruses/types.htm'>© cdc.gov</a>
+covercopy: <a href='https://pdb101.rcsb.org/motm/113'>©pdb</a>
 priority: 10000
 date: 2023-12-07 13:00:02
 title: "Neuraminidase (NA) protein, a Quick View"
 ytitle: "Neuraminidase (NA) protein, a Quick View"
 description: "Basic Knowledge of Neuraminidase (NA) protein"
 excerpt: "The flu NA (neuraminidase) protein is crucial because it plays a key role in the influenza virus's ability to infect host cells and spread within the body. It helps the virus to release newly formed viral particles from infected cells, facilitating the spread of the infection. As such, it's a key target for antiviral drugs and vaccine development, helping in controlling and preventing flu outbreaks."
-tags: [Biology, Immunology, Antibody]
+tags: [Biology, Immunology, Antibody, Influenza]
 category: [Notes, Biology, Immunity]
-cover: "https://www.cdc.gov/flu/images/h1n1/3D_Influenza_transparent_key_pieslice_med.gif"
-thumbnail: "https://www.cdc.gov/flu/images/h1n1/3D_Influenza_transparent_key_pieslice_med.gif"
+cover: "https://cdn.rcsb.org/pdb101/motm/113/113-Influenza_Neuraminidase-neuraminidases.jpg"
+thumbnail: "https://cdn.rcsb.org/pdb101/motm/113/113-Influenza_Neuraminidase-neuraminidases.jpg"
 ---
 
 
@@ -47,9 +47,9 @@ The influenza NA protein, or neuraminidase, is a critical component of the influ
 
 
 [^Schmidt_11]: Schmidt, P. M., Attwood, R. M., Mohr, P. G., Barrett, S. A., and McKimm-Breschkin, J. L. (2011). A generic system for the expression and purification of soluble and stable influenza neuraminidase. PLoS One 6:e16284. doi: 10.1371/journal.pone.0016284
-[^McKimm_13]McKimm-Breschkin, J. L., Williams, J., Barrett, S., Jachno, K., McDonald, M., Mohr, P. G., et al. (2013). Reduced susceptibility to all neuraminidase inhibitors of influenza H1N1 viruses with haemagglutinin mutations and mutations in non-conserved residues of the neuraminidase. J. Antimicrob. Chemother. 68, 2210–2221. doi: 10.1093/jac/dkt205
-[^Fujisaki_12]Fujisaki, S., Takashita, E., Yokoyama, M., Taniwaki, T., Xu, H., Kishida, N., et al. (2012). A single E105K mutation far from the active site of influenza B virus neuraminidase contributes to reduced susceptibility to multiple neuraminidase-inhibitor drugs. Biochem. Biophys. Res. Commun. 429, 51–56. doi: 10.1016/j.bbrc.2012.10.095
-[^McKimm_96b]McKimm-Breschkin, J. L., McDonald, M., Blick, T. J., and Colman, P. M. (1996b). Mutation in the influenza virus neuraminidase gene resulting in decreased sensitivity to the neuraminidase inhibitor 4-guanidino-Neu5Ac2en leads to instability of the enzyme. Virology 225, 240–242.
+[^McKimm_13]: McKimm-Breschkin, J. L., Williams, J., Barrett, S., Jachno, K., McDonald, M., Mohr, P. G., et al. (2013). Reduced susceptibility to all neuraminidase inhibitors of influenza H1N1 viruses with haemagglutinin mutations and mutations in non-conserved residues of the neuraminidase. J. Antimicrob. Chemother. 68, 2210–2221. doi: 10.1093/jac/dkt205
+[^Fujisaki_12]: Fujisaki, S., Takashita, E., Yokoyama, M., Taniwaki, T., Xu, H., Kishida, N., et al. (2012). A single E105K mutation far from the active site of influenza B virus neuraminidase contributes to reduced susceptibility to multiple neuraminidase-inhibitor drugs. Biochem. Biophys. Res. Commun. 429, 51–56. doi: 10.1016/j.bbrc.2012.10.095
+[^McKimm_96b]: McKimm-Breschkin, J. L., McDonald, M., Blick, T. J., and Colman, P. M. (1996b). Mutation in the influenza virus neuraminidase gene resulting in decreased sensitivity to the neuraminidase inhibitor 4-guanidino-Neu5Ac2en leads to instability of the enzyme. Virology 225, 240–242.
 
 
 [^Varghese_92]: Varghese, J. N., McKimm-Breschkin, J. L., Caldwell, J. B., Kortt, A. A., and Colman, P. M. (1992). The structure of the complex between influenza virus neuraminidase and sialic acid, the viral receptor. Proteins 14, 327–332. doi: 10.1002/prot.340140302

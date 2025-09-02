@@ -108,7 +108,6 @@ apm install language-r minimap pigments atom-beautify
 sudo apt install r-base-core
 ```
 
-
 ## python
 
 Python3 was pre-installed
@@ -483,3 +482,18 @@ pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple buildozer
 pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple  https://github.com/kivymd/KivyMD/archive/master.zip
 
 ```
+
+## Other bugs
+
+### Mouse Missing
+
+I tried the code from ChatGPT to clean the gabage files, ant it works. To my surprise, it deleted over 100 gb. I'm not sure which code works, but it works.
+
+```bash
+sudo apt-get clean
+sudo apt-get autreomve
+sudo rm -rf /tmp/*
+rm -rf ~/.cache/*
+```
+
+But after I reboot the machine, I found my mouse is gone. It only shows up when I hit the `home` key. And dispel when I move the mouse. I tried to change the mouse setting, but it didn't work. After checking the posts online, and thanks for the suggestion from [catsclaw](https://community.frame.work/t/solved-when-i-boot-pop-os-mouse-is-missing-and-inputs-are-weird/29761/3). I tried to make the configuring again by `sudo dpkg --configure -a`, and it works after reboot. So, it seems like we shouldn't delete all fines from `~/.cache/`. 

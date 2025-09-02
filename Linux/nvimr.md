@@ -251,6 +251,11 @@ Press ENTER or type command to continue
 
 ## Configure for LuanrVim
 
+!!! note Warning!!!
+    If you want the LunarVim Worked fine, please use ==older version== of the nvim! I was tried 11.3 and got lots of problems. When I downgraded to 9.5, it worked fine.
+    
+    Here is the link for [9.5](https://github.com/neovim/neovim/releases?page=2)
+
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cat "$HOME/.cargo/env" >> ~/.zshrc
@@ -294,7 +299,6 @@ o                   Start a new line
 Alt+ j/k            Move selected words/lines up/donw
 ```
 
-
 ### Cursor Related
 
 ```
@@ -332,9 +336,56 @@ Ctrl + b            page back (up)
 :set mouse=a        Inable the mouse 
 ```
 
+### Window Related
+
+| Command | Description |
+|---------|-------------|
+| `Ctrl + w + v` | Split the window vertically |
+| `Ctrl + w + s` | Split the window horizontally |
+| `Ctrl + w + c` | Close the current window |
+| `Ctrl + w + h` | Move the cursor to the left window |
+| `Ctrl + w + j` | Move the cursor to the down window |
+| `Ctrl + w + k` | Move the cursor to the up window |
+| `Ctrl + w + l` | Move the cursor to the right window |    
+| `Ctrl + w + =` | Make all windows the same size |
+| `Ctrl + w + _` | Maximize the current window |
+| `Ctrl + w + o` | Close all windows except the current one |
+| `Ctrl + w + r` | Rotate windows |
+| `Ctrl + w + H` | Move the current window to the far left |
+| `Ctrl + w + J` | Move the current window to the bottom |
+| `Ctrl + w + K` | Move the current window to the top |
+| `Ctrl + w + L` | Move the current window to the far right |
+| `Ctrl + w + q` | Quit the current window |
+| `Ctrl + w + t` | Move the cursor to next window |
+| `Ctrl + w + w` | Move the cursor to next window |
+| `Ctrl + w + p` | Move the cursor to previous window |
+| `Ctrl + w + n` | Create a new file in new window |
+| `Ctrl + w + r` | Rotate the windows |
+| `Ctrl + w + T` | Move the current window to a new tab |
+| `gt` | Go to the next tab |
+
+
+
 <style>
 pre {
   background-color:#38393d;
   color: #5fd381;
 }
 </style>
+
+## Other tips for lvim
+
+### Sort and remove duplicates
+
+When we write the python script, we sometimes would paste lots of codes for import the libraries. It is tedious to remove the duplicates and sort them. We could use the following command to do it.
+
+First, we could select the lines by `v` we want to sort and remove the duplicates. Then, we could use the following command:
+
+```vim 
+%sort # sort the line based on the character 
+%sort u # sort the line and remove the duplicates
+```
+
+!!! note
+    The `%` in the command means that the command is applied to the entire file. If you omit `%`, the command will only be applied to the current line or selection.
+

@@ -20,14 +20,20 @@ tmux is a very powerful interact-able bash interpreter. Once you familiarized wi
 
 Copy and Past:
 
-^b [ (ctrl+b [) : move the mouse;<br />^blanck: start to selecte; (hold this at less for a second)<br /> ^w: copy
+| Moves    | Keys     |
+| :------------- | :------------- |
+| Enter Copy Mode | `ctrl`-`b` + `[` |
+| Start to selecte| `ctrl`-`b` + `blank` |
+| Copy the selected words| `ctrl`-`b` + `w` |
+| Copy the selected words| `Enter` |
+| Paste the words| `ctrl`-`b` + `]` |
+| Show the copy list| `ctrl`-`b` + `#` |
+| Select the copy list| `ctrl`-`b` + `=` |
+| Jump to the line head| `ctrl`-`a` |
+| Jump to the line end| `ctrl`-`e` |
 
-Now, the selected words are in your copy list. You can using the favorite way to copy it in terminal, or Word, Atom, etc.<br />A typical way to past in tmux is:<br />^b ].
 
 
-Or you can:<br />^B [;<br />Using mouse the select a target;<br />^w;
-
-It works on turmx, but not on my laptop since when ever I typing ^+blank, the stupid Sugou Input will pop out and interrupt the processor...
 
 Panes: Each window could split into small panes which is the key feature for tmux.
 
@@ -51,3 +57,34 @@ Tips:
 |:-----|:-----|
 | Create a new Window|`ctrl`-`b`+ 'c'|
 | Switch to the next window| `ctrl`-`b` + `n`|
+| Move the window eadge to the right| `ctrl`-`b` + `→`|
+| flip the window lift| `ctrl`-`b` + `{ `|
+| flip the window right| `ctrl`-`b` + `}`|
+
+
+## Detach and Attach
+
+In tmux, you can detach the current session and attach it later. It is very useful when you are working on a remote server and you need to leave for a while. Basically, the detach the session means you can leave the session and the session will keep running in the background. And then, you can savly log out the server. When you come back, you can attach the session and continue your work.
+
+| Moves| Keys|
+|:-----|:-----|
+| Detach the session| `ctrl`-`b` + `d`|
+| List the session| `tmux list-sessions`|
+| Attach the session| `tmux attach-session -t <session-number>`|
+
+This could be very helpful.
+Example:
+```bash
+tmux list-sessions
+tmux attach-session -t 10
+```
+
+List of the session will be like:
+<pre>
+10: 1 windows (created Tue Jan 28 11:01:30 2025)
+11: 1 windows (created Tue Jan 28 11:05:37 2025)
+12: 1 windows (created Tue Jan 28 11:06:43 2025)
+20: 1 windows (created Fri Jan 31 10:11:23 2025) (attached)
+21: 1 windows (created Fri Jan 31 10:21:27 2025)
+9: 1 windows (created Tue Jan 28 11:01:14 2025)
+</pre>

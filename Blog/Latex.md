@@ -12,6 +12,120 @@ thumbnail: 'https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMT
 priority: 10000
 ---
 
+## Install Tex Live
+
+```bash
+sudo apt install texlive-latex-base # not recommended. You may install a very old version which can't install or update packages.
+```
+
+Make sure to delete the old version of tex live to avoid the conflict and confusion. If you forget where are they or the name of the package you installed, you can use the following command to find them:
+
+
+```bash
+dpkg -S /usr/bin/pdflatex
+dpkg -S /usr/bin/tlmgr
+```
+<pre>
+texlive-latex-base: /usr/bin/pdflatex
+texlive-base: /usr/bin/tlmgr
+</pre>
+
+Then, you can remove them by using the following command:
+
+```bash
+sudo apt remove texlive-latex-base
+sudo apt remove texlive-base
+# or you can run sudo apt remove texlive*
+sudo apt remove biber
+```
+
+
+I went to the [document](https://tug.org/texlive/acquire-netinstall.html) and download the [`install-tl-unx.tar.gz`](https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz) file. Then, I extract the file and run the `install-tl` file. With the default setting, it would end up at: `/usr/local/texlive/2025`
+
+
+<pre>
+# Set TeX Live 2025 path
+export PATH="/usr/local/texlive/2025/bin/x86_64-linux:$PATH"
+export MANPATH="/usr/local/texlive/2025/texmf-dist/doc/man/man5:$MANPATH"
+export INFOPATH="/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH"
+</pre>
+
+
+After that, **test** the installation by checking the version:
+
+```bash
+pdflatex --version
+```
+<pre>
+pdfTeX 3.141592653-2.6-1.40.23 (TeX Live 2025)
+kpathsea version 6.4.1
+</pre>
+
+### Error
+
+<pre>
+INFO - This is Biber 2.20
+INFO - Logfile is 'main.blg'
+INFO - Reading 'main.bcf'
+ERROR - Error: Found biblatex control file version 3.8, expected version 3.11.
+This means that your biber (2.20) and biblatex (3.17) versions are incompatible.
+See compat matrix in biblatex or biber PDF documentation.
+INFO - ERRORS: 1
+</pre>
+
+The easiest way is delete the files and compile again.
+```bash
+rm *.aux *.bbl *.bcf
+```
+
+## Citation (Reference)
+
+For the citation, there are few main types you can use in the latex: `biber` and `bibtex`. The `biber` is the newer one and it is recommended to use. The `bibtex` is the older one and it is not recommended to use. The `biber` is more powerful and flexible than the `bibtex`. The `biber` can handle more complex citation styles and it can handle more complex bibliography data. The `bibtex` is more simple and it is easier to use. The `bibtex` is more suitable for the beginners.
+
+bibtex example:
+
+```latex
+\documentclass{article}
+\begin{document}
+    \cite{Ctrax}
+    \bibliographystyle{plain}
+    \bibliography{main}
+\end{document}
+```
+
+how to compile the `bibtex` example:
+
+```bash
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
+```
+
+
+biber example:
+
+```latex
+\documentclass{article}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{main.bib}
+
+\begin{document}
+    \cite{Ctrax}
+    \printbibliography
+\end{document}
+``` 
+
+how to compile the `biber` example:
+
+```bash
+pdflatex main.tex
+biber main
+pdflatex main.tex
+pdflatex main.tex
+```
+
+
 ## Editor
 
 ### Prerequisation
@@ -43,7 +157,6 @@ https://www.zhihu.com/question/19954023
 - TexStudio
 - Sublime Text
 - Emacs
-
 
 ## Online Platform: Overleaf
 
@@ -95,6 +208,11 @@ This is an exmaple for showing the basic structure of a latex
 ```
 
 ## Citation
+
+cite: [LondonRob](https://tex.stackexchange.com/questions/102817/setting-up-texmaker-on-ubuntu-biblatex-sty-not-found)
+```bash
+sudo apt-get install texlive-bibtex-extra biber
+```
 
 In latex, there is at least two ways to cite: `cite` and `parencite`. The different between two of them are `parencite` could automatically add parent symbol, "()", for you.
 
@@ -198,3 +316,5 @@ pre {
   background-color:#38393d;                               color: #5fd381;
 }
 </style>
+
+

@@ -8,7 +8,7 @@ title: "CR9114"
 ytitle: "CR9114" 
 description: "A concise overview of the CR9114 antibody's binding to influenza A viruses, highlighting its effectiveness and comparison with other antibodies."
 excerpt: "This post provides a detailed exploration of the CR9114 antibody, focusing on its binding properties and effectiveness against various influenza A virus strains. It covers the specific gene segments from which CR9114 is derived, explaining its broad reactivity to both group 1 and group 2 influenza A viruses. The article highlights the significance of the HA stem region in the virus and how CR9114's binding to this region blocks the necessary conformational changes for viral entry into host cells. Additionally, it compares CR9114 to other antibodies like CR6261 and FI6v3, discussing their different binding modes and effectiveness. The content is technical and geared towards readers with a background in biology and immunology."
-tags: [Biology, Immunology, Antibody]
+tags: [Biology, Immunology, Antibody, Influenza]
 category: [Notes, Biology, Immunity]
 cover: https://imgur.com/veEzZ6U.png
 thumbnail: https://imgur.com/veEzZ6U.png
