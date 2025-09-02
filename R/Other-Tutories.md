@@ -1,7 +1,7 @@
 ---
-title: "Other Tutories for R"
+title: "Other Tutorials for R"
 ytitle: "R語言的其他相關教程"
-description: "Other Tutories"
+description: "Other Tutorials"
 url: ehgl6o
 date: 2020/08/13
 toc: true
@@ -11,7 +11,7 @@ category: [R, Plot, others]
 priority: 10000
 ---
 
-## Other Tutories
+## Other Tutorials
 
 
 ## 知乎

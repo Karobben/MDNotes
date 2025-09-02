@@ -4,17 +4,17 @@ url: geomtry_cha
 covercopy: <a href="https://www.wellesley.edu/news/2017/stories/node/120511">© wellesley.edu</a>
 priority: 10000
 date: 2022-02-13 10:56:29
-title: "python: geomitry calculation"
+title: "python: geometry calculation"
 ytitle: "python: 几何图形运算"
-description: "geomitry calculation: areas, distance, etc"
-excerpt: "geomitry calculation: areas, distance, etc"
+description: "geometry calculation: areas, distance, etc"
+excerpt: "geometry calculation: areas, distance, etc"
 tags: [Python, Data]
 category: [Python, Data]
 cover: "https://www.wellesley.edu/sites/default/files/styles/news_refresh_hero/public/assets/dailyshot/ds_461390782.jpg"
 thumbnail: "https://www.wellesley.edu/sites/default/files/styles/news_refresh_hero/public/assets/dailyshot/ds_461390782.jpg"
 ---
 
-## Geomitry is fun
+## Geometry is fun
 
 <style>
 pre {
@@ -80,22 +80,22 @@ plt.show()
 |![](https://s1.ax1x.com/2022/04/09/LPKgdU.png)|
 |:-:|
 
-#### Aear by shapely
+#### Area by shapely
 
-library `shapely` could also calculate the areas of a giving polygon
+library `shapely` could also calculate the areas of a given polygon
 
 ```python
 # pip install shapely
 from shapely.geometry import Polygon
 
 # create a polygon by following order:
-def creat_polygon(x, y):
+def create_polygon(x, y):
   return Polygon([[i,j]for i,j in zip(x,y)])
 
 
 x = [0, 0, 1, 2, 2]
 y = [0, 2, 1, 2, 0]
-P = creat_polygon(x, y)
+P = create_polygon(x, y)
 print(P.area)
 
 ```
@@ -112,7 +112,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import euclidean
 
-def Cir_arear(Center, P1):
+def Cir_area(Center, P1):
   r = euclidean(Center, P1)
   area = math.pi * r * r
   #circumference = 2 * math.pi * r

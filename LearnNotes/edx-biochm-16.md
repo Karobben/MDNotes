@@ -64,7 +64,7 @@ $F$: Faraday constant
 Exp: Calculating $\Delta G^ {'\circ}$ for a redox reaction
 This is a second reaction in the fermentation pathway
 $Acetaldehyde + NADH + H^ \to ENthonal + NAD^ $
-Step 1: seperate the reaction
+Step 1: separate the reaction
 |Reaction|Energy|
 |:-|:-|
 |$Acetaldehyde + 2H^ + 2e^ -\to ENthonal $|$E'^ { \circ} = -0.197V$|

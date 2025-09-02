@@ -20,13 +20,13 @@ priority: 10000
 Data + Analysis & Question -> Insight
 build model, solving problems
 
-Exp: Amazon recommendation new books to customers by their reading records
+Exp: Amazon recommends new books to customers by their reading records
 
 Prediction: take actions by the weather forecast.
 
-Why data science arise recently:
+Why data science arose recently:
   - big Data
-  - High performance of circulates
+  - High performance of computers
 
 Megabytes -> Gigabytes -> Terabytes -> Petabytes ->  Exabytes -> Zettabyte
 

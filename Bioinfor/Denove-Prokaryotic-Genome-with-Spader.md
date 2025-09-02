@@ -1,10 +1,10 @@
 ---
-title: "Denove Prokaryotic Genome with Spader"
-description: "Denove Prokaryotic Genome with Spader"
+title: "De novo Prokaryotic Genome with SPAdes"
+description: "De novo Prokaryotic Genome with SPAdes"
 url: genom_spider
 date: "2020/07/28"
 toc: true
-excerpt: "Denove Prokaryotic Genome with Spader"
+excerpt: "De novo Prokaryotic Genome with SPAdes"
 tags: [Software, Genome, Protocol]
 category: [Biology, Bioinformatics, Protocol, Genome]
 cover: 'https://tse3-mm.cn.bing.net/th/id/OIP.pg0lLEEeNeiUp31DPMKtRwHaCY'
@@ -12,7 +12,7 @@ thumbnail: 'https://tse3-mm.cn.bing.net/th/id/OIP.pg0lLEEeNeiUp31DPMKtRwHaCY'
 priority: 10000
 ---
 
-## Denove Prokaryotic Genome with Spader
+## De novo Prokaryotic Genome with SPAdes
 
 
 ## Data Download
@@ -43,7 +43,7 @@ java -jar  ~/Biosoft/Trimmomatic-0.38/trimmomatic-0.38.jar SE -threads 8 -phred3
 mv cut2_ERS011978_pass_1.fastq cut_ERS011978_pass_1.fastq
 ```
 
-### spade:
+### SPAdes:
 ```bash
 sudo /home/ken/Biosoft/SPAdes-3.12.0-Linux/bin/spades.py -1 fastq/cut_ERS011978_pass_1.fastq -2 fastq/cut_ERS011978_pass_2.fastq -o /home/ken/ComGE/assembly3
 ```

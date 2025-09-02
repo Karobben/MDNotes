@@ -18,7 +18,7 @@ thumbnail: "http://publish.illinois.edu/inspire-illinois/files/2014/04/UIUC-logo
 
 Bacterial gene are clustered by function (it could regulated by a same prone)
 
-THe invention of most cellular enzymatic mechanisms and biochemical pathways occured early in microbs and we are inherits it.
+The invention of most cellular enzymatic mechanisms and biochemical pathways occurred early in microbes and we inherit it.
 
 
 ## Do human continue to evolve?

@@ -1,23 +1,23 @@
 ---
-title: "Blive with RasperryPi"
-description: "Blive with RasperryPi"
+title: "Blive with Raspberry Pi"
+description: "Blive with Raspberry Pi"
 url: blive2
 date: 2020/06/23
 toc: true
-excerpt: "A script for Blive stream in RasperryPi.python + openCVC + ffmpeg"
-tags: [Linux, RasperryPi, bash, Python]
-category: [Linux, RasperryPi]
+excerpt: "A script for Blive stream in Raspberry Pi. Python + OpenCV + ffmpeg"
+tags: [Linux, RaspberryPi, bash, Python]
+category: [Linux, RaspberryPi]
 cover: 'https://tse3-mm.cn.bing.net/th/id/OIP.QohK_-okTvuh7r82wJlhNAHaE9?w=465&h=180'
 thumbnail: 'https://tse3-mm.cn.bing.net/th/id/OIP.QohK_-okTvuh7r82wJlhNAHaE9?w=180&h=180'
 priority: 10000
 ---
 
-## Blive with RasperryPi
+## Blive with Raspberry Pi
 
 Reference: [Bilibili: 五维谐振子 ](https://www.bilibili.com/read/cv791252/)
 
 <a name="Aypwi"></a>
-## Qick Start
+## Quick Start
 ```bash
 sudo apt upgrade
 sudo apt update
@@ -150,7 +150,7 @@ Image parameter commands
 
 
 <a name="7wvaM"></a>
-## python + openCVC + ffmpeg
+## Python + OpenCV + ffmpeg
 more: [CSDN: mind_programmonkey](https://blog.csdn.net/Mind_programmonkey/article/details/102732555)
 
 基本框架

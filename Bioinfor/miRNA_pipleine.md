@@ -15,11 +15,11 @@ priority: 10000
 ## miRNA pipeline
 
 
-## 1 fastq dum
+## 1 fastq dump
 fastq-dump *
 
 ### reads length distribution
-from intetnet  
+from internet  
 python scripts
 ```python
 from collections import Counter

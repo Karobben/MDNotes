@@ -422,7 +422,7 @@ xargs -n 3 sh -c 'efetch -db nuccore -id "$0" -seq_start "$1" -seq_stop "$2" -fo
 Description (optional):  
 Written by: NCBI Folks (12/14/2016)  
 Confirmed by:  
-Databases: protien, biosystems  
+Databases: protein, biosystems  
 
 ```
 epost -db protein -id BAD92651.1 -format acc | \

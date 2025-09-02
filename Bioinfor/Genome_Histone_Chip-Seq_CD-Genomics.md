@@ -1,27 +1,27 @@
 ---
-title: "Genome-Wide Profiling of Histone Modification with Chip-Seq (CD Genomics)"
-description: "Genome-Wide Profiling of Histone Modification with Chip-Seq (CD Genomics)"
+title: "Genome-Wide Profiling of Histone Modification with ChIP-Seq (CD Genomics)"
+description: "Genome-Wide Profiling of Histone Modification with ChIP-Seq (CD Genomics)"
 url: chm_modei2
 date: 2020/07/28
 toc: true
-excerpt: "Genome-Wide Profiling of Histone Modification with Chip-Seq (CD Genomics)"
-tags: [Biology, Bioinformatics, Chip-Seq]
+excerpt: "Genome-Wide Profiling of Histone Modification with ChIP-Seq (CD Genomics)"
+tags: [Biology, Bioinformatics, ChIP-Seq]
 category: [Biology, Bioinformatics]
 cover: 'https://s1.ax1x.com/2020/06/26/Nr4jZq.png'
 thumbnail: 'https://s1.ax1x.com/2020/06/26/Nr4jZq.png'
 priority: 10000
 ---
 
-## Genome-Wide Profiling of Histone Modification with Chip-Seq (CD Genomics)
+## Genome-Wide Profiling of Histone Modification with ChIP-Seq (CD Genomics)
 
-reference: CD genimics, **Genom-Wide Profiling of Histone Modifications with ChIP-Seq**<br />**
+reference: CD genomics, **Genome-Wide Profiling of Histone Modifications with ChIP-Seq**<br />**
 <a name="Ri2QX"></a>
 ## Introduction to Histone Modifications
 There are at least **9 different types** of post-translational modifications (**PTM**) have been found.<br />
 <br />
 
 
-| Examples of Modeification | Functions of PTM |
+| Examples of Modification | Functions of PTM |
 | :---: | :---: |
 | **methylation**<br />**acetylation**<br />**phosphorylation**<br />**ubiquitylation**<br />**sumoylation** | **Change chromatin structures**<br />**Recruit histone modifiers**<br />**change in gene expression**<br />**Transcriptional regulation**<br />**chromosome packaging**<br />** DNA damage/repair** |
 
@@ -46,7 +46,7 @@ ubiquitin moiety (76-amino-acid peptide.)<br />
 
 ![NroFV1.png](https://s1.ax1x.com/2020/06/26/NroFV1.png)
 
-## CHIP-SEQ DATA ANALYSIS
+## ChIP-SEQ DATA ANALYSIS
 
 ![NroA56.png](https://s1.ax1x.com/2020/06/26/NroA56.png)
 

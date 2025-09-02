@@ -51,7 +51,7 @@ library(GenomicFeatures)
 library(clusterProfiler)
 library(org.Dm.eg.db)
 
-txdb <- makeTxDbFromGFF(file="genom.gtf", format="gtf")
+txdb <- makeTxDbFromGFF(file="genome.gtf", format="gtf")
 Trans <- transcriptsBy(txdb, "gene")
 tmp <- bitr(names(Trans), fromType="FLYBASE", toType="SYMBOL", OrgDb="org.Dm.eg.db")
 names(Trans)[!is.na(tmp[[2]][match(names(Trans), tmp[[1]])])] <- tmp[[2]][match(names(Trans), tmp[[1]])][!is.na(tmp[[2]][match(names
@@ -109,7 +109,7 @@ library(BSgenome.dme.BDGP6.32)
 # read files: vcf, bam, gtf
 VCF <- read.table("out.vcf")                            
 bam<-BamFile(file="out.bam", index="out.bam.bai")
-txdb <- makeTxDbFromGFF(file="genom.gtf", format="gtf")
+txdb <- makeTxDbFromGFF(file="genome.gtf", format="gtf")
 
 # Change the name of the Trans into Sample
 Trans <- transcriptsBy(txdb, "gene")

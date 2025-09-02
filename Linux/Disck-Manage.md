@@ -1,10 +1,10 @@
 ---
-title: "Disck Manage"
-description: "Disck Manage"
-url: disck_manage2
+title: "Disk Manage"
+description: "Disk Manage"
+url: disk_manage2
 date: 2020/06/26
 toc: true
-excerpt: "Disck Manage is a Linux GUI software which could help you to manage the Disck easily."
+excerpt: "Disk Manage is a Linux GUI software which could help you to manage the Disk easily."
 tags: [Linux, Software]
 category: [Linux, Software]
 cover: 'https://cdn.nlark.com/yuque/0/2020/png/691897/1580726499899-157ae6cb-1cc8-4676-80e1-5b292e750ac5.png#align=left&display=inline&height=566&name=image.png&originHeight=566&originWidth=1064&size=84537&status=done&style=none&width=1064'
@@ -12,7 +12,7 @@ thumbnail: 'https://cdn.nlark.com/yuque/0/2020/png/691897/1580726499899-157ae6cb
 priority: 10000
 ---
 
-## Disck Manage
+## Disk Manage
 
 
 <a name="GCwmO"></a>

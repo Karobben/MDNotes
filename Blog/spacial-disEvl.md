@@ -1,6 +1,6 @@
 ---
 toc: true
-url: spacial_disEvl
+url: spatial_disEvl
 covercopy: © Dell-3
 priority: 10000
 date: 2023-10-06 12:40:48

@@ -539,11 +539,11 @@ Five σ factirs in E. coli gene expression
 - Exon splicing in Two-Stage Reactions
   - Invariant Sequences for splice junction
     - GU at the intron's 5'
-    - AG at teh intron's 3
+    - AG at the intron's 3
       - (graph), the number under the NT means the ration you are supposed to see them on the Intron
     - A branch point near the 3' splice site
     - Free G, not paire to the intron...
-    1. A2'-5' P-diester bind between the tinron A (OH²') and the intron at teh 5' splice site, forming a "lariat" structure.
+    1. A2'-5' P-diester bind between the tinron A (OH²') and the intron at the 5' splice site, forming a "lariat" structure.
     2. The Exon 1 OH³' group at the 5' splice site from a 3'-5' P-diester bind with the Exon 2' at the 3' splice site, releasing the intron with the free OH³' group.
     3. The intron keeps the  lariat structure.
     - Note: Splicing proceeds w/o free energy lose, Cleavage of one P-diseter bond and formation of a new bond.
@@ -663,7 +663,7 @@ Catalysis appears to involve water-mediated proton extraction from the substrate
 - Bromodomains specifically bind acetylated lysine residues on histones.
   - A deep hydrophobic pocket (==hole==) accommodates the acetyl-Lys side chain (PS, the hole recognize the acetyl-Lys specificity)
 
-- TAF1: has two brpmodomains and dipart from each with ~25Å, seperated by 7 ~8 residues.
+- TAF1: has two brpmodomains and dipart from each with ~25Å, separated by 7 ~8 residues.
 - A subunit of transcription factor TFIID (PDBid=1eqf)
 - ...
 - ...
@@ -747,7 +747,7 @@ Modeling predicts that methylated Lys3 binds in a solvent inaccessible area in f
 ### Understanding .. JMJD3 structure
 
 THe JMJD3 is bound to a H3 pep with a trimetrhylated Lys27
-- The cofactor analog N-oxylayglycine NOG not α-ketoglutarate and nickel not iron are used to prevetn teh reaction
+- The cofactor analog N-oxylayglycine NOG not α-ketoglutarate and nickel not iron are used to prevent the reaction
 The methylated Lys27 side chain insertes deep into the catalytic pocked, close to the cofactor analog and nickel for demethylation reaction.
 
 ### ==Chromatin Writers, Readers and Erases==

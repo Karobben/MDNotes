@@ -68,10 +68,10 @@ for i in return_dict.values():
 
  If `pool.join()` takes a long time, it typically indicates that there are still ongoing tasks in the pool. The duration is largely determined by the longest task in the pool. Issues such as inter-process communication, waiting for shared resources, and insufficient CPU cores can also cause slowdowns.
 
-## startmap()
+## starmap()
 
 
-Generally, `startmap` could work faster than `map`.
+Generally, `starmap` could work faster than `map`.
 
 ```python
 import multiprocessing as mp

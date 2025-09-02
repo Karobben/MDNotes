@@ -8,7 +8,7 @@ toc: true
  trinityrnaseq
 excerpt: "Trinity RNA-seq is a de novo transcriptome assembly software that uses RNA-seq data to reconstruct transcript sequences and estimate expression levels. It allows for comprehensive analysis of gene expression and isoform diversity in non-model organisms without a reference genome. <a title='ChatGPT'>Who said this?</a>"
 tags: [Software, Bioinformatics, NGS]
-category: [Biology, Bioinformatics, Software, De nove]
+category: [Biology, Bioinformatics, Software, De novo]
 cover: 'https://raw.githubusercontent.com/wiki/trinityrnaseq/trinityrnaseq/images/TrinityCompositeLogo.png'
 thumbnail: 'https://raw.githubusercontent.com/wiki/trinityrnaseq/trinityrnaseq/images/TrinityCompositeLogo.png'
 priority: 10000
@@ -24,7 +24,7 @@ priority: 10000
     sudo apt-get install autoconf
     ```
 
-- [Rlease page](https://github.com/trinityrnaseq/trinityrnaseq/releases)
+- [Release page](https://github.com/trinityrnaseq/trinityrnaseq/releases)
 
 If you come with the error below as making, try the [full package](https://github.com/trinityrnaseq/trinityrnaseq/releases/download/v2.11.0/trinityrnaseq-v2.11.0.FULL.tar.gz). (See resolution at [GitHub issue](https://github.com/trinityrnaseq/trinityrnaseq/issues/870))
 <pre>

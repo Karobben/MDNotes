@@ -618,7 +618,7 @@ Catalysis appears to involve water-mediated proton extraction from the substrate
 - Bromodomains specifically bind acetylated lysine residues on histones.
   - A deep hydrophobic pocket (==hole==) accommodates the acetyl-Lys side chain (PS, the hole recognize the acetyl-Lys specificity)
 
-- TAF1: has two brpmodomains and dipart from each with ~25Å, seperated by 7 ~8 residues.
+- TAF1: has two brpmodomains and dipart from each with ~25Å, separated by 7 ~8 residues.
 - A subunit of transcription factor TFIID (PDBid=1eqf)
 - ...
 - ...

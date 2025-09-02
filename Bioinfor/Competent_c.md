@@ -2,7 +2,7 @@
 title: "Calcium Competent Cells"
 date: 2020/06/29
 description: "How to Make Calcium Competent Cells"
-url: ca_competent
+url: ca_competent_cells
 toc: true
 excerpt: "Calcium competent cells are bacterial cells that are treated with calcium chloride to increase their ability to uptake plasmid DNA. The calcium ions disrupt the cell membrane and make it more permeable to DNA, increasing the efficiency of transformation. These cells are commonly used in molecular biology experiments to introduce foreign DNA into bacterial cells. <a title='GhatGPT'>Who said this?</a>"
 tags: [Biology, Cell, Wet]
@@ -60,7 +60,7 @@ Preparing for Day 2:
 **Chill overnight at 4°C**:
 100 mM CaCl2
 100 mM MgCl2
-85 mM CaCl2, 15% gly  cerol v/v
+85 mM CaCl2, 15% glycerol v/v
 Centrifuge rotor  
 
 
@@ -115,7 +115,7 @@ competency of cells.
 
 
 ---
-Advocation:
+Attribution:
 
 This protocol belongs to [berkeley.edu 2008](http://mcb.berkeley.edu/labs/krantz/protocols/calcium_comp_cells.pdf). I just gently reset part of the sentences.
 If there are any offensive behaviors, please contact <a mailto="a591465908@outlook.com">me</a> and I'll delete it
